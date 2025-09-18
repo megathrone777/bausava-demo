@@ -5,7 +5,6 @@
 
 # Dist
 node_modules
-build
 
 # IDE
 .vscode/*

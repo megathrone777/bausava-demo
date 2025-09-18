@@ -7,7 +7,7 @@
   $dbUser = $env["DB_USER"];
   $dbPassword = $env["DB_PASSWORD"];
 
-  R::setup("mysql:host=" . $dbHost . ";dbname=" . $dbName, $dbUser, $dbPassword);
+  R::setup("mysql:host=db.fr-pari1.bengt.wasmernet.com;dbname=bausava", "c4618ff67a6880005d5ad3f72fd0", "068cc461-8ff6-7e0e-8000-b3263cbaf1bd");
   $strings = R::findAll("strings");
   set_include_path("src/");
 
