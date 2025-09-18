@@ -1,0 +1,162 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
+@import "@fortawesome/fontawesome-free/css/brands.min.css";
+@import "@fortawesome/fontawesome-free/css/solid.min.css";
+@import "@fortawesome/fontawesome-free/css/regular.min.css";
+/* @import "./simditor.css"; */
+
+html,
+body {
+  height: 100%;
+}
+
+main {
+  height: calc(100% - 56px);
+}
+
+a {
+  text-decoration: none;
+}
+
+td {
+  line-height: 35px;
+}
+
+label.error {
+  color: red;
+  display: block;
+}
+
+input.error {
+  border-color: red;
+}
+
+img {
+  max-width: 100%;
+}
+
+.dropzone {
+  border-radius: 10px;
+  border: 2px dashed #bbb;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 12px;
+  padding: 18px;
+  text-align: center;
+}
+
+.dropzone--dragover {
+  background-color: #f6fffc;
+  border-color: #0a8;
+}
+
+.dropzone__hint {
+  color: #666;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.thumb {
+  border-radius: 10px;
+  border: 1px solid #eee;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  width: 130px;
+}
+
+.thumb__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.thumb__remove {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 6px;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 6px;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+
+.thumb__remove:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.dropzone__error {
+  color: #b00020;
+  margin-top: 6px;
+}
+
+.dropzone__success {
+  color: #0a8;
+  margin-top: 6px;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+  max-width: 700px;
+  margin-block: 20px;
+}
+
+.item {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: grab;
+  padding: 10px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.handle {
+  user-select: none;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #f3f4f6;
+}
+
+.dragging {
+  cursor: grabbing;
+  opacity: 0.6;
+}
+
+.drop-target {
+  outline: 2px dashed #10b981;
+  outline-offset: 4px;
+}
+.ghost {
+  border: 2px dashed #93c5fd;
+  background: #eff6ff;
+}
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+}
+.status .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #9ca3af;
+}
+.status.saving .dot {
+  background: #f59e0b;
+}
+.status.saved .dot {
+  background: #10b981;
+}
+.status.error .dot {
+  background: #ef4444;
+}

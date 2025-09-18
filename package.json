@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "@alpinejs/focus": "^3.15.0",
+    "@fancyapps/ui": "^6.0.28",
+    "@fortawesome/fontawesome-free": "^7.0.1",
+    "alpinejs": "^3.15.0",
+    "bootstrap": "5.3.8",
+    "simditor": "^2.3.28"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.12",
+    "parcel": "^2.15.4",
+    "tailwindcss": "^4.1.12"
+  },
+  "license": "UNLICENSED",
+  "name": "bausava",
+  "targets": {
+    "admin": {
+      "distDir": "build/admin",
+      "source": [
+        "src/admin/assets/js/init.js",
+        "src/admin/assets/css/init.css"
+      ]
+    },
+    "web": {
+      "distDir": "build/web",
+      "source": [
+        "src/web/assets/js/init.js",
+        "src/web/assets/css/init.css"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "parcel build",
+    "dev": "parcel watch"
+  },
+  "version": "1.0.0"
+}
