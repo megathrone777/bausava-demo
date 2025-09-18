@@ -7,6 +7,7 @@
 <html lang="cs">
 	<?php
 		if (str_contains($pathname, "/admin")) {
+   session_start();
 			include_once "admin/index.php";
 		} else {
 			include_once "web/index.php";
