@@ -13,5 +13,4 @@ build
 .idea
 
 .parcel-cache
-.env
 yarn.lock
