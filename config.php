@@ -1,10 +1,8 @@
 <?php
   require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/rb-mysql.php";
 
-  $env = parse_ini_file(".env");
-
-  if ($env) {
-    $_ENV = $env;
+  if (file_exists(".env")) {
+    $_ENV = parse_ini_file(".env");
   }
 
   $dbHost = $_ENV["DB_HOST"];
