@@ -53,8 +53,8 @@
 	} else {
 		if (isset($page)) {
 			$title = $page->titleMeta ?? $page->title;
-			$description = trim($page->description);
-			$keywords = trim($page->keywords);
+			$description = $page->description ?? "";
+			$keywords = $page->keywords ?? "";
 		} else {
 			$title = "Page not found";
 			$description = "404 - Page not found";
