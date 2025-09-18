@@ -1,7 +1,7 @@
 <?php
 	set_include_path("src/admin/");
+ session_start();
 	include_once "blocks/head.php";
-	session_start();
 ?>
 
 <body class="antialiased font-display">
