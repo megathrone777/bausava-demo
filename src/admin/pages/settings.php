@@ -2,7 +2,6 @@
 	require_once "helpers/includeWith.php";
 
 	$logo = R::findOne("settings", "id = 1");
-	$email = R::findOne("settings", "id = 2");
 ?>
 
 <div class="row">
@@ -44,19 +43,6 @@
 					minlength="6"
 					name="password"
 					type="text"
-				>
-			</div>
-
-			<div class="mb-3">
-				<label for="email">Email (contact form)</label>
-
-				<input
-					class="form-control"
-					id="email"
-					minlength="6" 
-					name="email"
-					type="email"
-					value="<?= $email->email; ?>"
 				>
 			</div>
 

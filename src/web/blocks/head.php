@@ -8,6 +8,10 @@
 		$title = getString("offersTitle");
 		$description = "";
 		$keywords = "";
+	} elseif ($pathname === "/terms") {
+		$title = getString("termsTitle");
+		$description = "";
+		$keywords = "";
 	} elseif (preg_match("#^/offers/([^/]+)$#", $pathname, $matches)) {
 		$slug = $matches[1];
 		$offer = R::findOne("offers", "slug = ?", [$slug]);

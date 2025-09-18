@@ -45,7 +45,7 @@
 		>
 			<?=
 				button(
-					href: "#contacts",
+					href: "/#contacts",
 					template: "primary",
 					text: getString("consultButton"),
 				);

@@ -1,4 +1,10 @@
-<?php $contacts = R::findAll("contacts"); ?>
+<?php
+	require_once "helpers/getString.php";
+
+	$contactItems = R::findAll("contacts");
+	$contactsTitle = getString("contactsTitle");
+	$contactsText = getString("contactsText");
+?>
 
 <div
 	class="
@@ -26,7 +32,7 @@
 					sm:text-4xl
 				"
 			>
-				Kontakt
+				<?= $contactsTitle; ?>
 			</h2>
 			
 			<p
@@ -36,12 +42,11 @@
 					opacity-80
 				"
 			>
-				Napište nám pár vět o vaší nemovitosti nebo projektu.
-				Ozveme se nejpozději následující pracovní den.
+				<?= $contactsText; ?>
 			</p>
 			
 			<ul class="mt-6 space-y-3">
-				<?php foreach ($contacts as $contact): ?>
+				<?php foreach ($contactItems as $contactItem): ?>
 					<li>
 						<a
 							class="
@@ -53,7 +58,7 @@
 								transition-colors
 								hover:text-primary
 							"
-							href="<?= $contact->href; ?>"
+							href="<?= $contactItem->href; ?>"
 						>
 							<i
 								class="
@@ -63,10 +68,10 @@
 									text-primary
 								"
 							>
-								<?= $contact->icon; ?>
+								<?= $contactItem->icon; ?>
 							</i>
 
-							<?= $contact->title; ?>
+							<?= $contactItem->title; ?>
 						</a>
 					</li>
 				<?php endforeach; ?>

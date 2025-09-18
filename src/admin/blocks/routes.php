@@ -40,6 +40,12 @@
 			case "/admin/strings":
 				include_once "pages/strings.php";
 				break;
+			case "/admin/terms":
+				include_once "pages/terms.php";
+				break;
+			case "/admin/contacts":
+				include_once "pages/contacts.php";
+				break;
 			case "/admin/settings":
 				include_once "pages/settings.php";
 				break;

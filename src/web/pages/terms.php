@@ -1,58 +1,52 @@
-<div
-	class="
-		gradient
-		pb-12
-		pt-10
-		md:pb-16
-	"
->
-	<div class="container">
-		<div
-			class="
-				flex flex-col
-				gap-y-6
-			"
-		>
+<?php
+	require_once "helpers/getString.php";
+
+	$termsContent = R::findOne("terms", "id = 1");
+	$termsTitle = getString("termsTitle");
+?>
+
+<div class="gradient pt-10">
+	<div class="pb-12 md:pb-16">
+		<div class="container">
 			<div
 				class="
 					flex flex-col
-					items-start
-					gap-y-3
-					mb-3
+					gap-y-6
 				"
 			>
-				<h1
-					class="
-						font-bold
-						text-2xl text-black
-						tracking-tight
-						sm:text-4xl
-					"
-				>
-					Zásady ochrany osobních údajů
-				</h1>
-
 				<div
 					class="
 						flex flex-col
+						items-start
 						gap-y-3
+						mb-3
 					"
 				>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Voluptate repellat quidem cupiditate illo nam recusandae tempora,
-						eligendi doloremque sint atque saepe nesciunt fugiat numquam.
-						Quasi deleniti blanditiis minus soluta ut!
-					</p>
+					<h1
+						class="
+							font-bold
+							text-2xl text-black
+							tracking-tight
+							sm:text-4xl
+						"
+					>
+						<?= $termsTitle; ?>
+					</h1>
 
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Voluptate repellat quidem cupiditate illo nam recusandae tempora,
-						eligendi doloremque sint atque saepe nesciunt fugiat numquam.
-						Quasi deleniti blanditiis minus soluta ut!
-					</p>
+					<div
+						class="
+							flex flex-col
+							gap-y-3
+						"
+					>
+						<?= trim($termsContent->text); ?>
+					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="bg-white">
+		<?php include_once "blocks/contacts.php"; ?>
 	</div>
 </div>

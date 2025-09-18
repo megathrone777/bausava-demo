@@ -6,6 +6,6 @@
 
 <p>
 	<a class="text-sm" href="/terms">
-		<?= getString("termsLink"); ?>
+		<?= getString("termsTitle"); ?>
 	</a>
 </p>

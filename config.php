@@ -1,18 +1,24 @@
 <?php
   require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/rb-mysql.php";
 
-	// $env = parse_ini_file(".env");
-  // $dbHost = $env["DB_HOST"];
-  // $dbName = $env["DB_NAME"];
-  // $dbUser = $env["DB_USER"];
-  // $dbPassword = $env["DB_PASSWORD"];
+  $env = parse_ini_file(".env");
 
-  $dbHost = "db.fr-pari1.bengt.wasmernet.com";
-  $dbName = "bausava";
-  $dbUser = "c4618ff67a6880005d5ad3f72fd0";
-  $dbPassword = "068cc461-8ff6-7e0e-8000-b3263cbaf1bd";
+  if ($env) {
+    $_ENV = $env;
+  }
 
-  R::setup("mysql:host=" . $dbHost . ";dbname=" . $dbName . ";port=10272", $dbUser, $dbPassword);
+  $dbHost = $_ENV["DB_HOST"];
+  $dbName = $_ENV["DB_NAME"];
+  $dbUser = $_ENV["DB_USERNAME"];
+  $dbPassword = $_ENV["DB_PASSWORD"];
+  $dbPort = $_ENV["DB_PORT"];
+
+  R::setup(
+    "mysql:host=" . $dbHost . ";dbname=" . $dbName . ";port=" . $dbPort,
+    $dbUser,
+    $dbPassword
+  );
+
   $strings = R::findAll("strings");
   set_include_path("src/");
 

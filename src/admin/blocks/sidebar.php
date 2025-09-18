@@ -1,5 +1,5 @@
 <?php
-  $sidebarItems = [
+  $sidebarGroups = [
     [
       array("label" => "Menu", "url" => "/menu"),
       array("label" => "Intro", "url" => "/hero"),
@@ -13,14 +13,15 @@
     ],
 
     [
-      array("label" => "Rychlá kalkulace zhodnocení", "url" => "/calculate"),
-      array("label" => "Kalkulátor odhadu", "url" => "/calculator"),
-      array("label" => "Kontakt", "url" => "/contacts")
+      array("label" => "Rychlá kalkulace zhodnocení (form + tlacitka)", "url" => "/calculate"),
+      array("label" => "Kalkulátor odhadu (form)", "url" => "/calculator"),
+      array("label" => "Kontakt (form + tlacitka)", "url" => "/contacts")
     ],
 
     [
       array("label" => "Ostatni tlacitka", "url" => "/strings"),
-      array("label" => "Nastaveni", "url" => "/settings")
+      array("label" => "Nastaveni", "url" => "/settings"),
+      array("label" => "Zásady ochrany", "url" => "/terms")
     ]
   ];
 ?>
@@ -32,58 +33,28 @@
     pt-1
   "
 >
-  <ul
-    class="
-      flex-column
-      gap-1
-      nav nav-underline
-    "
-  >
-    <li class="nav-item">
-      <a
-        class="nav-link <?= $pathname === '/admin/menu' ? 'active' : '' ?>"
-        href="/admin/menu"
-      >
+  <?php foreach($sidebarGroups as $index => $sidebarGroup): ?>
+    <ul
+      class="
+        flex-column
+        gap-1
+        nav nav-underline
+      "
+    >
+      <?php foreach($sidebarGroup as $sidebarItem): ?>
+        <li class="nav-item">
+          <a
+            class="nav-link <?= $pathname === '/admin' . $sidebarItem['url'] ? 'active' : '' ?>"
+            href="/admin<?= $sidebarItem['url']; ?>"
+          >
+            <?= $sidebarItem["label"]; ?>
+          </a>
+        </li>
+      <?php endforeach; ?>
+    </ul>
 
-      </a>
-		</li>
-  </ul>
-
-  <hr class="mb-1 mt-1">
-
-  <ul
-    class="
-      flex-column
-      gap-1
-      nav nav-underline
-    "
-  >
-    <li class="nav-item">
-      <a
-        class="nav-link <?= $pathname === '/admin/calculate' ? 'active' : '' ?>"
-        href="/admin"
-      >
-        
-      </a>
-		</li>
-  </ul>
-
-  <hr class="mb-1 mt-1">
-
-  <ul
-    class="
-      flex-column
-      gap-1
-      nav nav-underline
-    "
-  >
-    <li class="nav-item">
-      <a
-        class="nav-link <?= $pathname === '/admin/strings' ? 'active' : '' ?>"
-        href="/admin"
-      >
-        
-      </a>
-    </li>
-  </ul>
+    <?php if ($index != array_key_last($sidebarGroups)): ?>
+      <hr class="mb-1 mt-1">
+    <?php endif; ?>
+  <?php endforeach; ?>
 </nav>
