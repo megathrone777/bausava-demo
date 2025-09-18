@@ -7,7 +7,7 @@
   $dbUser = $env["DB_USER"];
   $dbPassword = $env["DB_PASSWORD"];
 
-  R::setup("mysql:host=" . $dbHost . ";port=10272;dbname=" . $dbName, $dbUser, $dbPassword);
+  R::setup("mysql:host=" . $dbHost . ";dbname=" . $dbName, $dbUser, $dbPassword);
   $strings = R::findAll("strings");
   set_include_path("src/");
 
