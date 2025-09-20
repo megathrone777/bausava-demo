@@ -461,7 +461,7 @@
 															<div class="form-check mb-2">
 																<input
 																	class="form-check-input"
-																	<?php if ($package->featured): ?>checked<?php endif; ?>
+																	<?php if ($package->featured > 0): ?>checked<?php endif; ?>
 																	id="<?= $index; ?>-package-featured"
 																	name="packages[<?= $index; ?>][featured]"
 																	type="checkbox"

@@ -37,10 +37,12 @@
 
 	$newPackages = [];
 	if ($packages) {
-		foreach($packages as $package) {
+		foreach($packages as $index => $package) {
+			$checked = isset($_POST['packages'][$index]['featured']) && $_POST['packages'][$index]['featured'] == 'on' ? 1 : 0;
+
 			$newPackages[] = array(
 				"badge" => $package["badge"],
-				"featured" => $package["featured"],
+				"featured" => $checked,
 				"label" => $package["label"],
 				"value" => $package["value"],
 				"text" => $package["text"]
@@ -48,7 +50,7 @@
 		}
 	}
 
-	$newHelp;
+	$newHelp = "";
 	if ($help) {
 		$newHelp = json_encode(
 			array(
