@@ -14,7 +14,7 @@
 		$placeholderText = $required ? $placeholder . " *" : $placeholder;
 		$inputId = $id ? "id=" . $id : "";
 		$model = $model ? "data-js-model=" . $model : "";
-		$inputMin = strlen($min) > 0 && $min > -1 ? "min=" . $min : "";
+		$inputMin = isset($min) && $min > -1 ? "min=" . $min : "";
 		
 		return <<<HTML
 			<div>
