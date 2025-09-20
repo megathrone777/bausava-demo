@@ -10,6 +10,8 @@
 	$faqs = $_POST["faqs"];
 	$button = $_POST["button"];
 	$help = $_POST["help"];
+	$packages = $_POST["packages"];
+	$packagesTitle = $_POST["packagesTitle"];
 
 	$newFeatures = [];
 	foreach($features as $feature) {
@@ -29,13 +31,21 @@
 		}
 	}
 
+	$newPackages = [];
+	if (isset($packages)) {
+		foreach($packages as $package) {
+			$newPackages[] = array(
+				"badge" => $package["badge"],
+				"featured" => $package["featured"],
+				"label" => $package["label"],
+				"value" => $package["value"],
+				"text" => $package["text"]
+			);
+		}
+	}
+
 	$newHelp;
-	if ($help) {
-		var_dump(array(
-				"content" => $help["content"],
-				"text" => $help["text"],
-				"title" => $help["title"],
-		));
+	if (isset($help)) {
 		$newHelp = json_encode(
 			array(
 				"content" => $help["content"],
@@ -55,6 +65,8 @@
 	$service->faqs = json_encode($newFaqs, FALSE);
 	$service->button = $button;
 	$service->help = $newHelp;
+	$service->packages = json_encode($newPackages, FALSE);
+	$service->packages_title = $packagesTitle;
 
 	R::store($service);
 	header("Location: /admin/services");

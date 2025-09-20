@@ -32,7 +32,6 @@
 			$refs['file-list'].innerHTML = items
 		}
 	}"
-	data-js-init="$watch('dragOver', value => console.log(value))"
 >
 	<p
 		class="

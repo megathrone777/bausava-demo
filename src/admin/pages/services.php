@@ -418,6 +418,105 @@
 											</div>
 										</div>
 
+										<?php if ($service->packages && count(json_decode($service->packages, false)) > 0): ?>
+											<hr>
+
+											<div class="mb-5">
+												<?php if ($service->packages_title): ?>
+													<div class="mb-4">
+														<input
+															class="form-control fw-bold"
+															name="packagesTitle"
+															type="text"
+															value="<?= $service->packages_title; ?>"
+														>
+													</div>
+												<?php endif; ?>
+
+												<div
+													class="
+														d-flex
+														flex-column
+														gap-2
+														ps-2
+													"
+												>
+													<?php
+														$packages = json_decode($service->packages, FALSE);
+
+														foreach($packages as $index => $package):
+													?>
+														<div>
+															<div class="mb-2">
+																<label class="form-label">Badge</label>
+																
+																<input
+																	class="form-control"
+																	name="packages[<?= $index; ?>][badge]"
+																	type="text"
+																	value="<?= $package->badge; ?>"
+																>
+															</div>
+
+															<div class="form-check mb-2">
+																<input
+																	class="form-check-input"
+																	<?php if ($package->featured): ?>checked<?php endif; ?>
+																	id="<?= $index; ?>-package-featured"
+																	name="packages[<?= $index; ?>][featured]"
+																	type="checkbox"
+																>
+
+																<label
+																	class="form-check-label"
+																	for="<?= $index; ?>-package-featured"
+																>
+																	Featured
+																</label>
+															</div>
+
+															<div class="mb-2">
+																<label class="form-label">Label</label>
+																
+																<input
+																	class="form-control"
+																	name="packages[<?= $index; ?>][label]"
+																	type="text"
+																	value="<?= $package->label; ?>"
+																>
+															</div>
+
+															<div class="mb-2">
+																<label class="form-label">Value</label>
+																
+																<input
+																	class="form-control"
+																	name="packages[<?= $index; ?>][value]"
+																	type="text"
+																	value="<?= $package->value; ?>"
+																>
+															</div>
+															
+															<div>
+																<label class="form-label">Text</label>
+																
+																<input
+																	class="form-control"
+																	name="packages[<?= $index; ?>][text]"
+																	type="text"
+																	value="<?= $package->text; ?>"
+																>
+															</div>
+
+															<?php if ($index != array_key_last($packages)): ?>
+																<hr>
+															<?php endif; ?>
+														</div>
+													<?php endforeach; ?>
+												</div>
+											</div>
+										<?php endif; ?>
+
 										<?php
 											$faqs = json_decode($service->faqs, FALSE, 512, JSON_OBJECT_AS_ARRAY);
 
@@ -507,7 +606,7 @@
 										<?php endif; ?>
 
 										<?php if ($service->help): ?>
-											<?php	$help = json_decode($service->help); ?>
+											<?php	$help = json_decode($service->help, false); ?>
 											
 											<hr>
 
