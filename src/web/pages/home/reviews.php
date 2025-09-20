@@ -64,7 +64,7 @@
 							class="font-semibold text-primary"
 							href="<?= $review['url']; ?>"
 						>
-							Více
+							<?= getString("more"); ?>
 						</a>
 					</p>
 				</div>

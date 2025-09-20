@@ -13,9 +13,9 @@
     ],
 
     [
-      array("label" => "Rychlá kalkulace zhodnocení (form + tlacitka)", "url" => "/calculate"),
+      array("label" => "Rychlá kalkulace zhodnocení (form)", "url" => "/calculate"),
       array("label" => "Kalkulátor odhadu (form)", "url" => "/calculator"),
-      array("label" => "Kontakt (form + tlacitka)", "url" => "/contacts")
+      array("label" => "Kontakt (form)", "url" => "/contacts")
     ],
 
     [

@@ -60,8 +60,8 @@
 			$description = $page->description ?? "";
 			$keywords = $page->keywords ?? "";
 		} else {
-			$title = "Page not found";
-			$description = "404 - Page not found";
+			$title = getString("pageNotFound");
+			$description = "404 - " . getString("pageNotFound");
 			$keywords = "";
 		}
 	}
@@ -93,35 +93,35 @@
 			font-display: block;
 			font-family: "Avenir";
 			font-weight: 400;
-			src: url("/src/web/assets/fonts/AvenirNext-Regular.woff");
+			src: url("/src/web/assets/fonts/AvenirNext-Regular.woff2") format("woff2");
 		}
 
 		@font-face {
 			font-display: block;
 			font-family: "Avenir";
 			font-weight: 500;
-			src: url("/src/web/assets/fonts/AvenirNext-Medium.woff");
+			src: url("/src/web/assets/fonts/AvenirNext-Medium.woff2") format("woff2");
 		}
 
 		@font-face {
 			font-display: block;
 			font-family: "Avenir";
 			font-weight: 600;
-			src: url("/src/web/assets/fonts/AvenirNext-SemiBold.woff");
+			src: url("/src/web/assets/fonts/AvenirNext-SemiBold.woff2") format("woff2");
 		}
 
 		@font-face {
 			font-display: block;
 			font-family: "Avenir";
 			font-weight: 700;
-			src: url("/src/web/assets/fonts/AvenirNext-Bold.woff");
+			src: url("/src/web/assets/fonts/AvenirNext-Bold.woff2") format("woff2");
 		}
 
 		@font-face {
 			font-display: block;
 			font-family: "Avenir";
 			font-weight: 900;
-			src: url("/src/web/assets/fonts/AvenirNext-Heavy.woff");
+			src: url("/src/web/assets/fonts/AvenirNext-Black.woff2") format("woff2");
 		}
 	</style>
 

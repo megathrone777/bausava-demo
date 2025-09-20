@@ -1,4 +1,5 @@
 <?php
+	require_once "helpers/includeWith.php";
 	require_once "helpers/getString.php";
 
 	$termsContent = R::findOne("terms", "id = 1");
@@ -62,49 +63,15 @@
 			action="/src/admin/helpers/terms/update.php"
 			method="POST"
 		>
-			<div
-				x-data="{
-					content: '<?= trim($termsContent->text); ?>'
-				}"
-				class="
-					bg-gray-300
-					border border-gray-900
-					col
-					mb-3
-					p-3
-					rounded
-				"
-			>
-				<input
-					name="text"
-					type="hidden"
-					:value="content.trim()"
-				>
-
-				<alpine-editor name="text" x-model="content">
-					<div class="d-flex gap-2" data-type="menu">
-						<button
-							class="btn btn-sm btn-light"
-							data-active-class="btn-dark"
-							data-command="strong"
-							type="button"
-						>
-							Bold
-						</button>
-
-						<button
-							class="btn btn-sm btn-light"
-							data-active-class="btn-dark"
-							data-command="em"
-							type="button"
-						>
-							Italic
-						</button>
-					</div>
-
-					<div class="p-3" data-type="editor"></div>	
-				</alpine-editor>
-			</div>
+			<?php
+				includeWith(
+					"theme/editor.php",
+					array(
+						"editorName" => "text",
+						"editorValue" => $termsContent->text
+					)
+				);
+			?>
 
 			<button
 				class="btn btn-success"

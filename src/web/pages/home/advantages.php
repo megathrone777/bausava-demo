@@ -61,9 +61,10 @@
 			class="
 				bg-white
 				border border-secondary
-				p-8
+				p-4
 				rounded-3xl
 				shadow
+				xl:p-6
 			"
 		>
 			<h3	class="font-bold text-xl">

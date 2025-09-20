@@ -1,15 +1,10 @@
-# Local
-.DS_Store
+!.vscode/extensions.json
 *.local
 *.log*
-
-# Dist
-node_modules
-
-# IDE
-.vscode/*
-!.vscode/extensions.json
+.DS_Store
+.env
 .idea
-
 .parcel-cache
+.vscode/*
+node_modules
 yarn.lock

@@ -124,7 +124,7 @@
 							focus:outline-none focus:ring-2
 							h-9
 							hover:bg-secondary
-							leading-[34px]
+							leading-9
 							min-h-9
 							px-2.5
 							ring
@@ -132,7 +132,7 @@
 							text-black text-sm
 							transition-shadow
 							whitespace-nowrap
-							md:px-4 md:h-10 md:min-h-10 md:leading-[38px]
+							md:px-4 md:h-10 md:min-h-10 md:leading-10
 						"
 						href="$url"
 					>

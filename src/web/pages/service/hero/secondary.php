@@ -35,9 +35,9 @@
 				<?= $service->title; ?>
 			</h1>
 
-			<p class="font-medium mb-4">
-				<?= $service->text; ?>
-			</p>
+			<div class="font-medium mb-4">
+				<?= trim($service->text); ?>
+			</div>
 
 			<div
 				class="

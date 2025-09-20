@@ -1,4 +1,8 @@
-<?php $logo = R::findOne("settings", "id = 1"); ?>
+<?php
+	require_once "helpers/getString.php";
+
+	$logo = R::findOne("settings", "id = 1");
+?>
 
 <div class="grow">
 	<p
@@ -8,7 +12,7 @@
 			text-sm
 		"
 	>
-		IČO 00000000 • Sídlo: Praha
+		<?= getString("ico"); ?>
 	</p>
 </div>
 

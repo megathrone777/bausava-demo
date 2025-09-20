@@ -1,4 +1,4 @@
-<?php $helpData = json_decode($service->help, false); ?>
+<?php $helpData = json_decode($service->help); ?>
 
 <div
 	class="
@@ -19,17 +19,15 @@
 		<?= $helpData->title; ?>
 	</h3>
 	
-	<ul
+	<div
 		class="
 			mb-4
 			space-y-3
 			text-amber-100/90
 		"
 	>
-		<?php foreach($helpData->items as $helpItem): ?>
-			<li><?= $helpItem; ?><li>
-		<?php endforeach; ?>
-	</ul>
+		<?= trim($helpData->content); ?>
+	</div>
 	
 	<p class="opacity-80 text-xs">
 		<?= $helpData->text; ?>

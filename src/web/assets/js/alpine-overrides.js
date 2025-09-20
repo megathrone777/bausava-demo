@@ -29,10 +29,6 @@ const initOverrides = () => {
     startingWith("data-js-key", Alpine.prefixed("bind:key"))
   );
 
-  // Alpine.mapAttributes(
-  //   startingWith("data-js-model", Alpine.prefixed("bind:model"))
-  // );
-
   Alpine.mapAttributes(
     startingWith("data-js-style", Alpine.prefixed("bind:style"))
   );

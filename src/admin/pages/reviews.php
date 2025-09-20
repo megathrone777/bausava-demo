@@ -62,7 +62,7 @@
 				data-bs-target="#create-review"
 				type="button"
 			>
-				Добавить
+				Pridat
 			</button>
 		</div>
 	<?php endif; ?>
@@ -75,10 +75,10 @@
     <table class="align-middle table table-bordered table-condensed">
       <thead>
         <tr>
-          <th>Заголовок</th>
-					<th>Текст</th>
-          <th>Картинка</th>
-					<th>Ссылка</th>
+          <th>Title</th>
+					<th>Text</th>
+          <th>Image</th>
+					<th>URL</th>
           <th></th>
         </tr>
       </thead>

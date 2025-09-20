@@ -244,6 +244,7 @@
 			<thead>
 				<tr>
 					<th>Title</th>
+					<th>Category</th>
 					<th>Price</th>
 					<th>Type</th>
 					<th>Actions</th>
@@ -252,8 +253,13 @@
 
 			<tbody>
 				<?php foreach ($projects as $project): ?>
+					<?php
+						$projectCategory = R::findOne("projects_categories", "id = " . $project->category);
+					?>
+
 					<tr>
 						<td><?= $project->title; ?></td>
+						<td><?= $projectCategory->title; ?></td>
 						<td><?= $project->price; ?></td>
 						<td><?= $project->type; ?></td>
 

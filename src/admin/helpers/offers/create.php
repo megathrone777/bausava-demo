@@ -3,9 +3,16 @@
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/src/admin/helpers/slugify.php";
 
 	$badges = $_POST["badges"];
+	$description = $_POST["description"];
+	$features = $_POST["features"];
 	$price = $_POST["price"];
 	$title = $_POST["title"];
 	$type = $_POST["type"];
+
+	$newFeatures = [];
+	foreach($features as $key => $feature) {
+		$newFeatures[] = $feature;
+	}
 
 	$newBadges = [];
 	foreach($badges as $key => $badge) {
@@ -16,7 +23,9 @@
 	$offer->title = $title;
 	$offer->price = $price;
 	$offer->type = $type;
+	$offer->description = $description;
 	$offer->badges = json_encode($newBadges, false);
+	$offer->features = json_encode($newFeatures, false);
 
 	$newOfferId = R::store($offer);
 

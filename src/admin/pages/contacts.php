@@ -3,6 +3,7 @@
 
 	$contactItems = R::findAll("contacts");
 	$contactsTitle = getString("contactsTitle");
+	$contactsHint = getString("contactsHint");
 	$contactsText = getString("contactsText");
 ?>
 
@@ -93,7 +94,7 @@
       <thead>
         <tr>
           <th>Title</th>
-          <th>Href</th>
+          <th>Url</th>
 					<th>Actions</th>
         </tr>
       </thead>
@@ -143,5 +144,42 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+
+		<form
+			action="/src/admin/helpers/string/update.php"
+			class="
+				align-items-center
+				d-inline-flex
+				gap-3
+			"
+			method="POST"
+		>
+			<input
+				name="back"
+				type="hidden"
+				value="/admin/contacts"
+			>
+
+			<input
+				name="name"
+				type="hidden"
+				value="<?= $contactsHint->name; ?>"
+			>
+
+			<input
+				class="form-control"
+				name="value"
+				size="<?= strlen($contactsHint->value); ?>"
+				type="text"
+				value="<?= $contactsHint->value; ?>"
+			>
+
+			<button
+				class="btn btn-success"
+				type="submit"
+			>
+				<i class="fa-regular fa-floppy-disk"></i>
+			</button>
+		</form>
   </div>
 </div>

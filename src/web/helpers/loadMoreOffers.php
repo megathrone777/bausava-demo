@@ -22,7 +22,7 @@
 	echo json_encode(
 		array(
 			"count" => count($items),
-			"items" => array_reverse($items)
+			"items" => $items
 		)
 	);
 ?>

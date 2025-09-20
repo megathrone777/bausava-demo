@@ -32,7 +32,7 @@
 		<?= $service->title; ?>
 	</h1>
 
-	<div>
-		<p><?= $service->text; ?></p>
+	<div class="font-medium">
+		<?= trim($service->text); ?>
 	</div>
 </div>

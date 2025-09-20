@@ -1,5 +1,12 @@
+<?php
+	require_once "helpers/getString.php";
+
+	$servicesTitle = getString("servicesTitle");
+	$servicesText = getString("servicesText");
+?>
+
 <h2 class="box-title">
-	S čím vám pomůžeme
+	<?= $servicesTitle; ?>
 </h2>
 
 <p
@@ -9,6 +16,5 @@
 		opacity-80
 	"
 >
-	Komplexní balíček služeb pro majitele i investory. 
-	Vše na jednu smlouvu, jeden rozpočet a jeden zodpovědný tým.
+	<?= $servicesText; ?>
 </p>

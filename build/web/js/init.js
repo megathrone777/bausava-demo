@@ -9097,9 +9097,6 @@ const initOverrides = ()=>{
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-fancybox", (0, _alpinejsDefault.default).prefixed("bind:data-fancybox")));
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-href", (0, _alpinejsDefault.default).prefixed("bind:href")));
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-key", (0, _alpinejsDefault.default).prefixed("bind:key")));
-    // Alpine.mapAttributes(
-    //   startingWith("data-js-model", Alpine.prefixed("bind:model"))
-    // );
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-style", (0, _alpinejsDefault.default).prefixed("bind:style")));
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-src", (0, _alpinejsDefault.default).prefixed("bind:src")));
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-class", (0, _alpinejsDefault.default).prefixed("bind:class")));

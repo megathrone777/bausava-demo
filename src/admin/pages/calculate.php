@@ -4,6 +4,7 @@
 	$calculateFields = R::findAll("calculate_fields");
 	$calculateTitle = getString("calculateTitle");
 	$calculateText = getString("calculateText");
+	$calculateHint = getString("calculateHint");
 ?>
 
 <div class="row">
@@ -136,5 +137,42 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+
+		<form
+			action="/src/admin/helpers/string/update.php"
+			class="
+				align-items-center
+				d-inline-flex
+				gap-3
+			"
+			method="POST"
+		>
+			<input
+				name="back"
+				type="hidden"
+				value="/admin/calculate"
+			>
+
+			<input
+				name="name"
+				type="hidden"
+				value="<?= $calculateHint->name; ?>"
+			>
+
+			<input
+				class="form-control"
+				name="value"
+				size="<?= strlen($calculateHint->value); ?>"
+				type="text"
+				value="<?= $calculateHint->value; ?>"
+			>
+
+			<button
+				class="btn btn-success"
+				type="submit"
+			>
+				<i class="fa-regular fa-floppy-disk"></i>
+			</button>
+		</form>
   </div>
 </div>

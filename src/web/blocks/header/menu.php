@@ -6,7 +6,7 @@
 		flex
 		gap-x-6
 		gradient
-		h-[calc(100vh-64px)]
+		h-[calc(100dvh-64px)]
 		items-center
 		justify-center
 		p-4

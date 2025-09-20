@@ -55,10 +55,13 @@
 						bg-primary
 						border border-primary
 						cursor-pointer
+						inline-flex
+						items-center
+						h-9.5
+						leading-none
 						px-3
-						py-2
 						rounded-xl
-						text-sm text-white
+						text-[14px] text-white
 					"
 					data-js-class="{
 						'bg-primary border-primary text-white': type === 'flat',
@@ -75,8 +78,11 @@
 					class="
 						border border-secondary
 						cursor-pointer
+						inline-flex
+						items-center
+						h-9.5
+						leading-none
 						px-3
-						py-2
 						rounded-xl
 						text-sm
 					"

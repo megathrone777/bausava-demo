@@ -7,7 +7,7 @@
 		string $model = null,
 		bool $required = false,
 	) {
-		$isRequired = $required ? "required" : ""; 
+		$isRequired = $required ? "required" : "";
 		$placeholderText = $required ? $placeholder . " *" : $placeholder;
 		$inputId = $id ? "id=" . $id : "";
 		$model = $model ? "data-js-model=" . $model : "";
@@ -15,7 +15,7 @@
 		return <<<HTML
 			<div>
 				<input
-					autocomplete="off"
+					autocomplete="on"
 					class="
 						bg-transparent
 						block

@@ -32,7 +32,7 @@
 						border-0
 						font-medium
 						h-[39px]
-						leading-[39px]
+						leading-none
 						px-3
 						ring ring-secondary
 						rounded-xl

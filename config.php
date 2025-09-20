@@ -5,16 +5,13 @@
     $_ENV = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/.env");
   }
 
-  $dbHost = $_ENV["DB_HOST"];
-  $dbName = $_ENV["DB_NAME"];
-  $dbUser = $_ENV["DB_USERNAME"];
-  $dbPassword = $_ENV["DB_PASSWORD"];
-  $dbPort = $_ENV["DB_PORT"];
+  $_ENV["MAIL_HOST"] = "127.0.0.1";
+  $_ENV["MAIL_PORT"] = 1025;
 
   R::setup(
-    "mysql:host=" . $dbHost . ";dbname=" . $dbName . ";port=" . $dbPort,
-    $dbUser,
-    $dbPassword
+    "mysql:host=" . $_ENV["DB_HOST"] . ";dbname=" . $_ENV["DB_NAME"] . ";port=" . $_ENV["DB_PORT"],
+    $_ENV["DB_USERNAME"],
+    $_ENV["DB_PASSWORD"]
   );
 
   $strings = R::findAll("strings");
