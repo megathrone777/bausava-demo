@@ -31,7 +31,10 @@
 
 				if ($service->layout == "secondary") {
 					include_once "hero/secondary.php";
-					include_once "packages.php";
+
+					if ($service->packages && count(json_decode($service->packages, false)) > 0) {
+						include_once "packages.php";
+					}
 				}
 
 				if ($service->catalog) {

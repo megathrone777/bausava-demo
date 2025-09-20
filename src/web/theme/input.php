@@ -10,26 +10,32 @@
 		bool $required = false,
 	) {
 		$isRequired = $required ? "required" : "";
-		$labelText = $required ? $label . " *" : $label;
 		$placeholderText = $required ? $placeholder . " *" : $placeholder;
 		$inputId = $id ? "id=" . $id : "";
 		$model = $model ? "data-js-model=" . $model : "";
 		$inputMin = isset($min) && $min > -1 ? "min=" . $min : "";
-		
-		return <<<HTML
-			<div>
+
+		$labelHtml = "";
+
+		if (isset($label) && strlen($label) > 0) {
+			$star = $required ? " *" : "";
+
+			$labelHtml = "
 				<label
-					class="
+					class='
 						cursor-pointer
 						font-semibold
 						inline-block
 						mb-2
 						text-xs
-					"
-					for="$id"
-				>
-					$labelText
-				</label>
+					'
+					for=" . $id . "
+				>" . $label . $star . "</label>";
+		}
+		
+		return <<<HTML
+			<div>
+				$labelHtml
 
 				<input
 					autocomplete="on"

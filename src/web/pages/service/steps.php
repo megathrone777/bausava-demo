@@ -1,6 +1,4 @@
-<?php
-	$steps = json_decode($service->steps, false);
-?>
+<?php	$steps = json_decode($service->steps, false); ?>
 
 <div class="box">
 	<h3
