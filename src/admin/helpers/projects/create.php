@@ -4,9 +4,16 @@
 
 	$badges = $_POST["badges"];
 	$category = $_POST["category"];
+	$description = $_POST["description"];
+	$features = $_POST["features"];
 	$price = $_POST["price"];
 	$title = $_POST["title"];
 	$type = $_POST["type"];
+
+	$newFeatures = [];
+	foreach($features as $key => $feature) {
+		$newFeatures[] = $feature;
+	}
 
 	$newBadges = [];
 	foreach($badges as $key => $badge) {
@@ -18,7 +25,9 @@
 	$project->title = $title;
 	$project->price = $price;
 	$project->type = $type;
+	$project->description = $description;
 	$project->badges = json_encode($newBadges, false);
+	$project->features = json_encode($newFeatures, false);
 
 	$newProjectId = R::store($project);
 

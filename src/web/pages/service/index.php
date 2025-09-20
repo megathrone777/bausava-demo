@@ -38,9 +38,9 @@
 					include_once "houses/index.php";
 				}
 
-				if ($service->steps) {
+				if ($service->steps && count(json_decode($service->steps, false)) > 0) {
 					include_once "steps.php";
-				}	
+				}
 				
 				$faqs = json_decode($service->faqs, false);
 				
@@ -61,6 +61,10 @@
 							"title" => getString("faqsTitle")
 						)
 					);
+				}
+
+				if ($service->has_form) {
+					include_once "request.php";
 				}
 			?>
 		</div>

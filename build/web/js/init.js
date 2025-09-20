@@ -9101,6 +9101,9 @@ const initOverrides = ()=>{
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-src", (0, _alpinejsDefault.default).prefixed("bind:src")));
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-class", (0, _alpinejsDefault.default).prefixed("bind:class")));
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-click", (0, _alpinejsDefault.default).prefixed("on:click")));
+    (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-dragover", (0, _alpinejsDefault.default).prefixed("on:dragover")));
+    (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-dragleave", (0, _alpinejsDefault.default).prefixed("on:dragleave")));
+    (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-drop", (0, _alpinejsDefault.default).prefixed("on:drop")));
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-swipe-left", (0, _alpinejsDefault.default).prefixed("swipe:left")));
     (0, _alpinejsDefault.default).mapAttributes(startingWith("data-js-submit", (0, _alpinejsDefault.default).prefixed("on:submit")));
 };

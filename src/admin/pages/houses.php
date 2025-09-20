@@ -166,16 +166,103 @@
 											>
                     </div>
 
-										<div class="mb-3">
+										<div class="mb-5">
                       <label class="form-label">Price</label>
 
                       <input
 												class="form-control"
-												name="house"
+												name="price"
 												value="<?= $house->price; ?>"
 												type="text"
 											>
                     </div>
+
+										<hr>
+
+										<div class="mb-5">
+											<h5>Features</h5>
+
+											<div
+												class="
+													align-items-stretch
+													d-flex
+													flex-column
+													gap-3
+													ps-2
+												"
+											>
+												<?php
+													$houseFeatures = json_decode($house->features);
+
+													foreach($houseFeatures as $featureIndex => $houseFeature):
+												?>
+													<div
+														class="
+															align-items-center
+															d-flex
+															gap-2
+														"
+													>
+														<div
+															class="h-100"
+															style="color: #8b6b4a; min-width: 45px;"
+														>
+															<?php
+																include $_SERVER["DOCUMENT_ROOT"] . "/src/web/icons/" . $houseFeature->icon . ".php";
+															?>
+														</div>
+
+														<div
+															class="
+																d-flex
+																flex-column
+																gap-2
+															"
+														>
+															<input
+																name="features[<?= $featureIndex; ?>][icon]"
+																type="hidden"
+																value="<?= $houseFeature->icon; ?>"
+															>
+
+															<input
+																class="form-control"
+																name="features[<?= $featureIndex; ?>][label]"
+																type="text"
+																value="<?= $houseFeature->label; ?>"
+															>
+
+															<input
+																class="form-control"
+																name="features[<?= $featureIndex; ?>][value]"
+																type="text"
+																value="<?= $houseFeature->value; ?>"
+															>
+														</div>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+
+										<hr>
+
+										<div class="mb-5">
+											<h5>Popis bytu</h5>
+
+											<div class="mb-1">
+												<?php
+													includeWith(
+														"theme/editor.php",
+														array(
+															"editorName" => "description",
+															"editorValue" => trim($house->description)
+														)
+													);
+												?>
+											</div>
+										</div>
+
+										<hr>
 
 										<div class="mb-3">
                       <label class="form-label">Badges</label>
@@ -266,7 +353,7 @@
 						>
 					</div>
 
-					<div class="mb-3">
+					<div class="mb-5">
 						<label class="form-label">Price</label>
 
 						<input
@@ -275,6 +362,101 @@
 							type="text"
 						>
 					</div>
+
+					<hr>
+
+					<div class="mb-5">
+						<h5>Features</h5>
+
+						<div
+							class="
+								align-items-stretch
+								d-flex
+								flex-column
+								gap-3
+								ps-2
+							"
+						>
+							<?php
+								foreach(
+									[
+										(object)array("icon" => "building", "placeholder" => "Typ objektu"),
+										(object)array("icon" => "floor", "placeholder" => "Podlaží"),
+										(object)array("icon" => "bed", "placeholder" => "Řešení"),
+										(object)array("icon" => "size", "placeholder" => "Velikost"),
+										(object)array("icon" => "location", "placeholder" => "Localita"),
+										(object)array("icon" => "money", "placeholder" => "Cena")
+									] as $featureIndex => $newFeature
+								):
+							?>
+								<div
+									class="
+										align-items-center
+										d-flex
+										gap-2
+									"
+								>
+									<div
+										class="h-100"
+										style="color: #8b6b4a; min-width: 45px;"
+									>
+										<?php
+											include $_SERVER["DOCUMENT_ROOT"] . "/src/web/icons/" . $newFeature->icon . ".php";
+										?>
+									</div>
+
+									<div
+										class="
+											d-flex
+											flex-column
+											gap-2
+										"
+									>
+										<input
+											name="features[<?= $featureIndex; ?>][icon]"
+											type="hidden"
+											value="<?= $newFeature->icon; ?>"
+										>
+
+										<input
+											class="form-control"
+											name="features[<?= $featureIndex; ?>][label]"
+											placeholder="<?= $newFeature->placeholder; ?>"
+											type="text"
+											value="<?= $newFeature->placeholder; ?>"
+										>
+
+										<input
+											class="form-control"
+											name="features[<?= $featureIndex; ?>][value]"
+											placeholder
+											type="text"
+										>
+									</div>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</div>
+
+					<hr>
+
+					<div class="mb-5">
+						<h5>Popis bytu</h5>
+
+						<div class="mb-1">
+							<?php
+								includeWith(
+									"theme/editor.php",
+									array(
+										"editorName" => "description",
+										"editorValue" => ""
+									)
+								);
+							?>
+						</div>
+					</div>
+
+					<hr>
 
 					<div class="mb-3">
 						<label class="form-label">Badges</label>

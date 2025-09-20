@@ -1,6 +1,10 @@
 <?php
+	require_once "helpers/getString.php";
 	require_once "theme/select.php";
 	require_once "theme/input.php";
+
+	$calculatorTitle = getString("calculatorTitle");
+	$calculatorText = getString("calculatorText");
 
 	$locationsOptions = array_map(function($location) {
 		return $location->name;
@@ -9,7 +13,7 @@
 
 <div>
 	<h2 class="box-title">
-		Kalkulátor odhadu ceny nemovitosti
+		<?= $calculatorTitle; ?>
 	</h2>
 
 	<p
@@ -19,8 +23,7 @@
 			opacity-90
 		"
 	>
-		Orientační odhad tržní hodnoty a potenciálu po rekonstrukci.
-		Skutečný odhad upřesníme po prohlídce a na základě tržních dat.
+		<?= $calculatorText; ?>
 	</p>
 
 	<form
@@ -99,31 +102,18 @@
 			</div>
 		</div>
 
-		<div>
-			<label
-				class="
-					cursor-pointer
-					font-semibold
-					inline-block
-					mb-2
-					text-xs
-				"
-				for="area-input"
-			>
-				Plocha (m²)
-			</label>
-
-			<?=
-				input(
-					id: "area-input",
-					model: "area",
-					name: "area",
-					placeholder: "Plocha (m²)",
-					required: true,
-					type: "number"
-				);
-			?>
-		</div>
+		<?=
+			input(
+				id: "area-input",
+				label: "Plocha (m&sup2;)",
+				min: "0",
+				model: "area",
+				name: "area",
+				placeholder: "Plocha (m&sup2;)",
+				required: true,
+				type: "number"
+			);
+		?>
 
 		<?=
 			select(

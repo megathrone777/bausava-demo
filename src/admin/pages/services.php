@@ -452,7 +452,7 @@
 															"
 														>
 															<div>
-																<label class="form-label mb-1">Question:</label>
+																<label class="form-label mb-1">Dotaz:</label>
 															
 																<input
 																	class="form-control"
@@ -464,7 +464,7 @@
 															</div>
 															
 															<div>
-																<label class="form-label mb-1">Answer:</label>
+																<label class="form-label mb-1">Odpoved:</label>
 
 																<textarea
 																	class="form-control"
@@ -474,6 +474,34 @@
 															</div>
 														</div>
 													<?php endforeach; ?>
+
+													<div
+														class="
+															d-flex
+															flex-column
+															gap-1
+															ps-2
+														"
+													>
+														<div>
+															<label class="form-label mb-1">Dotaz:</label>
+														
+															<input
+																class="form-control"
+																name="faqs[<?= count($faqs); ?>][question]"
+																type="text"
+															>
+														</div>
+														
+														<div>
+															<label class="form-label mb-1">Odpoved:</label>
+
+															<textarea
+																class="form-control"
+																name="faqs[<?= count($faqs); ?>][answer]"
+															></textarea>
+														</div>
+													</div>
 												</div>
 											</div>
 										<?php endif; ?>

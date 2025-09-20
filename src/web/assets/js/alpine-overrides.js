@@ -46,6 +46,18 @@ const initOverrides = () => {
   );
 
   Alpine.mapAttributes(
+    startingWith("data-js-dragover", Alpine.prefixed("on:dragover"))
+  );
+
+  Alpine.mapAttributes(
+    startingWith("data-js-dragleave", Alpine.prefixed("on:dragleave"))
+  );
+
+  Alpine.mapAttributes(
+    startingWith("data-js-drop", Alpine.prefixed("on:drop"))
+  );
+
+  Alpine.mapAttributes(
     startingWith("data-js-swipe-left", Alpine.prefixed("swipe:left"))
   );
 

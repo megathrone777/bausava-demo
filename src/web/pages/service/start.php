@@ -4,15 +4,7 @@
 	$startData = json_decode($service->start, false);
 ?>
 
-<div
-	class="
-		bg-white
-		p-6
-		ring-1 ring-stone-200
-		rounded-2xl
-		shadow-sm
-	"
->
+<div class="box">
 	<h3
 		class="
 			font-bold

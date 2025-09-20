@@ -77,8 +77,15 @@
 
 				<?php
 					include_once "gallery.php";
-					include_once "features.php";
-					include_once "description.php";
+
+					if (count(json_decode($project->features)) > 0) {
+						include_once "features.php";
+					}
+					
+					if (strlen($project->description) > 0) {
+						include_once "description.php";
+					}
+					
 					include_once "details.php";
 				?>
 			</div>

@@ -3,17 +3,34 @@
 		string $name,
 		string $placeholder,
 		string $type,
+		string $label = null,
+		string $min = null,
 		string $id = null,
 		string $model = null,
 		bool $required = false,
 	) {
 		$isRequired = $required ? "required" : "";
+		$labelText = $required ? $label . " *" : $label;
 		$placeholderText = $required ? $placeholder . " *" : $placeholder;
 		$inputId = $id ? "id=" . $id : "";
 		$model = $model ? "data-js-model=" . $model : "";
-
+		$inputMin = strlen($min) > 0 && $min > -1 ? "min=" . $min : "";
+		
 		return <<<HTML
 			<div>
+				<label
+					class="
+						cursor-pointer
+						font-semibold
+						inline-block
+						mb-2
+						text-xs
+					"
+					for="$id"
+				>
+					$labelText
+				</label>
+
 				<input
 					autocomplete="on"
 					class="
@@ -32,6 +49,7 @@
 						focus:ring-2 focus:ring-primary
 					"
 					$inputId
+					$inputMin
 					$model
 					maxlength="50"
 					name="$name"

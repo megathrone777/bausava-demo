@@ -21,10 +21,12 @@
 
 	$newFaqs = [];
 	foreach($faqs as $faq) {
-		$newFaqs[] = array(
-			"answer" => $faq["answer"],
-			"question" => $faq["question"]
-		);
+		if (strlen($faq["answer"]) > 0 && strlen($faq["question"]) > 0) {
+			$newFaqs[] = array(
+				"answer" => $faq["answer"],
+				"question" => $faq["question"]
+			);
+		}
 	}
 
 	$newHelp;

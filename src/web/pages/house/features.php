@@ -1,38 +1,7 @@
 <?php
 	require_once "theme/icon.php";
 
-	$features = array(
-		array(
-			"icon" => "building",
-			"label" => "Typ objektu:",
-			"value" => "Byt"
-		),
-		array(
-			"icon" => "floor",
-			"label" => "Podlaží:",
-			"value" => "5. Podlaží"
-		),
-		array(
-			"icon" => "bed",
-			"label" => "Řešení",
-			"value" => "3+kk"
-		),
-		array(
-			"icon" => "size",
-			"label" => "Velikost:",
-			"value" => "71 m<sup>2</sup>",
-		),
-		array(
-			"icon" => "location",
-			"label" => "Localita:",
-			"value" => "Praha 3"
-		),
-		array(
-			"icon" => "money",
-			"label" => "Cena:",
-			"value" => "8 999 900 Kč"
-		)
-	);
+	$houseFeatures = json_decode($house->features);
 ?>
 
 <div
@@ -43,7 +12,7 @@
 		justify-between
 	"
 >
-	<?php foreach($features as $feature): ?>
+	<?php foreach($houseFeatures as $houseFeature): ?>
 		<div
 			class="
 				text-center
@@ -61,13 +30,13 @@
 					text-primary
 				"
 			>
-				<?php icon($feature["icon"]); ?>
+				<?php icon($houseFeature->icon); ?>
 			</span>
 
-			<p><?= $feature["label"]; ?></p>
+			<p><?= $houseFeature->label; ?>:</p>
 
 			<p class="font-bold">
-				<?= $feature["value"]; ?>
+				<?= $houseFeature->value; ?>
 			</p>
 		</div>
 	<?php endforeach; ?>
