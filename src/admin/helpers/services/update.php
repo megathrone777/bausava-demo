@@ -2,37 +2,41 @@
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/config.php";
 
 	$id = $_POST["id"];
-	$name = $_POST["name"];
-	$title = $_POST["title"];
-	$text = $_POST["text"];
-	$icon = $_POST["icon"];
-	$features = $_POST["features"];
-	$faqs = $_POST["faqs"];
 	$button = $_POST["button"];
-	$help = $_POST["help"];
-	$packages = $_POST["packages"];
-	$packagesTitle = $_POST["packagesTitle"];
+	$icon = $_POST["icon"];
+	$name = $_POST["name"];
+	$text = $_POST["text"];
+	$title = $_POST["title"];
+	$faqs = !empty($_POST["faqs"]) ? $_POST["faqs"] : null;
+	$features = !empty($_POST["features"]) ? $_POST["features"] : null;
+	$help = !empty($_POST["help"]) ? $_POST["help"] : null;
+	$packages = !empty($_POST["packages"]) ? $_POST["packages"] : null;
+	$packagesTitle = !empty($_POST["packagesTitle"]) ? $_POST["packagesTitle"] : null;
 
 	$newFeatures = [];
-	foreach($features as $feature) {
-		$newFeatures[] = array(
-			"text" => $feature["text"],
-			"title" => $feature["title"]
-		);
-	}
-
-	$newFaqs = [];
-	foreach($faqs as $faq) {
-		if (strlen($faq["answer"]) > 0 && strlen($faq["question"]) > 0) {
-			$newFaqs[] = array(
-				"answer" => $faq["answer"],
-				"question" => $faq["question"]
+	if ($features) {
+		foreach($features as $feature) {
+			$newFeatures[] = array(
+				"text" => $feature["text"],
+				"title" => $feature["title"]
 			);
 		}
 	}
 
+	$newFaqs = [];
+	if ($faqs) {
+		foreach($faqs as $faq) {
+			if (strlen($faq["answer"]) > 0 && strlen($faq["question"]) > 0) {
+				$newFaqs[] = array(
+					"answer" => $faq["answer"],
+					"question" => $faq["question"]
+				);
+			}
+		}
+	}
+
 	$newPackages = [];
-	if (isset($packages)) {
+	if ($packages) {
 		foreach($packages as $package) {
 			$newPackages[] = array(
 				"badge" => $package["badge"],
@@ -45,7 +49,7 @@
 	}
 
 	$newHelp;
-	if (isset($help)) {
+	if ($help) {
 		$newHelp = json_encode(
 			array(
 				"content" => $help["content"],
