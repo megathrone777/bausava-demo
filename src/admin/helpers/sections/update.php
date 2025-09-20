@@ -2,39 +2,56 @@
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/config.php";
 
 	try {
-		if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+		if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 			http_response_code(405);
-			echo json_encode(['success'=>false,'error'=>'Method not allowed']); exit;
+			echo json_encode([
+				"error"=>"Method not allowed",
+				"success" => false,
+			]);
+			exit;
 		}
 
-		$raw = file_get_contents('php://input');
+		$raw = file_get_contents("php://input");
 		$json = json_decode($raw, true);
-		if (!is_array($json) || !isset($json['order']) || !is_array($json['order'])) {
+
+		if (!is_array($json) || !isset($json["order"]) || !is_array($json["order"])) {
 			http_response_code(400);
-			echo json_encode(['success'=>false,'error'=>'Invalid payload']); exit;
+			echo json_encode([
+				"error" => "Invalid payload",
+				"success" => false, 
+			]);
+			exit;
 		}
 
 		R::begin();
 
-		foreach ($json['order'] as $row) {
-			if (!isset($row['id'], $row['position'])) {
-				throw new RuntimeException('Invalid row');
+		foreach ($json["order"] as $row) {
+			if (!isset($row["id"], $row["position"])) {
+				throw new RuntimeException("Invalid row");
 			}
-			$id  = (int)$row['id'];
-			$pos = (int)$row['position'];
 
-			$b = R::load('sections', $id);
-			if (!$b->id) throw new RuntimeException("Block $id not found");
-			$b->position = $pos;
-			R::store($b);
+			$id = (int)$row["id"];
+			$position = (int)$row["position"];
+			$section = R::load("sections", $id);
+
+			if (!$section->id) throw new RuntimeException("Block $id not found");
+			$section->position = $position;
+			R::store($section);
 		}
 
 		R::commit();
-		echo json_encode(['success'=>true]);
 
-	} catch (Throwable $t) {
+		echo json_encode([
+			"success" => true
+		]);
+
+	} catch (Throwable $error) {
 		R::rollback();
 		http_response_code(500);
-		echo json_encode(['success'=>false,'error'=>$t->getMessage()]);
+		
+		echo json_encode([
+			"error" => $error->getMessage(),
+			"success" => false
+		]);
 	}
 ?>

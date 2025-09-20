@@ -1,4 +1,25 @@
-<?php $menuItems = R::findAll("menu"); ?>
+<?php
+	$menuItems = [];
+
+	foreach (R::findAll("menu") as $menuItem) {
+		if ($menuItem->section_id) {
+			$section = R::findOne("sections", "id = " . $menuItem->section_id);
+
+			if (!empty($section)) {
+				$newMenuItem = $menuItem;
+				$newMenuItem["position"] = $section->position;
+				$menuItems[] = $newMenuItem;
+				continue;
+ 			}
+		}
+
+		$menuItems[] = $menuItem;
+	}
+
+	usort($menuItems, function($a, $b) {
+		return $a["position"] <=> $b["position"];
+	});
+?>
 
 <div
 	class="
