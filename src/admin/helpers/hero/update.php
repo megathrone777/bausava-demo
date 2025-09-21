@@ -9,7 +9,7 @@
 	$mediaText = $_POST["media_text"];
 	$mediaTitle = $_POST["media_title"];
 	$mediaValue = $_POST["media_value"];
-	$imageName = $_FILES["image"]["tmp_name"];
+	$imageName = empty($_FILES["image"]) ? null : $_FILES["image"]["tmp_name"];
 
 	$newBadges = [];
 	foreach($badges as $key => $badge) {
@@ -18,7 +18,7 @@
 
 	$hero = R::load("hero", $id);
 
-	if (!empty($imageName)) {
+	if ($imageName) {
 		if (file_exists($hero->image)) unlink($hero->image);
 
 		$imageExt = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
