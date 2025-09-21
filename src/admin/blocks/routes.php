@@ -1,4 +1,4 @@
-<div class="col-10 pt-3">
+<div class="col-10 pb-3 pt-3">
 	<?php
 		switch ($pathname) {
 			case "/admin":
@@ -42,6 +42,9 @@
 				break;
 			case "/admin/terms":
 				include_once "pages/terms.php";
+				break;
+			case "/admin/request":
+				include_once "pages/request.php";
 				break;
 			case "/admin/contacts":
 				include_once "pages/contacts.php";

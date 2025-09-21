@@ -410,8 +410,7 @@
       </div>
 
       <span class="text-xs text-stone-600">
-        * Odeslání přes API (pokud nastavíte) nebo fallback přes e-mail.
-        Není třeba upravovat kód — e-mail si nastavíte při prvním odeslání.
+        <?= getString("requestHint"); ?>
       </span>
     </div>
   </form>

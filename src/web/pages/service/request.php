@@ -1,3 +1,5 @@
+<?php require_once "helpers/getString.php"; ?>
+
 <div class="box">
 	<h3
 		class="
@@ -6,12 +8,12 @@
 			text-lg text-stone-900
 		"
 	>
-		Nezávazná poptávka – rodinný dům
+		<?= getString("requestTitle"); ?>
 	</h3>
 
 	<p class="mb-4 text-stone-700">
-		Vyplňte, co již máte a s čím potřebujete pomoci. Poptávku zpracujeme a navrhneme nejlepší postup.
+		<?= getString("requestText"); ?>
 	</p>
 
-	<?php include_once "blocks/forms/request/index.php"; ?>
+	<?php include_once "blocks/forms/request.php"; ?>
 </div>

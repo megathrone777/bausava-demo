@@ -10,9 +10,9 @@
 		<?php include_once "blocks/header.php"; ?>
 
 		<main>
-      <div class="container-fluid h-100">
-        <div class="row h-100">
-          <div class="col-2 h-100">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2">
             <?php include_once "blocks/sidebar.php"; ?>
           </div>
 			

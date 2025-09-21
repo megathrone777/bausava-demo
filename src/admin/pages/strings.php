@@ -40,7 +40,7 @@
 									readonly
 									value="<?= $stringItem->name; ?>"
 									type="text"
-									style="opacity:0.5;"
+									style="opacity: 0.5;"
 								>
 							</td>
 							
