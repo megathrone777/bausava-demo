@@ -110,7 +110,7 @@
 						inline-block
 						leading-9
 						no-underline
-						md:leading-10
+						md:leading-[38px]
 					"
 					href="$href"
 				>
