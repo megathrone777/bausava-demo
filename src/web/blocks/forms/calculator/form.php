@@ -110,7 +110,6 @@
 				model: "area",
 				name: "area",
 				placeholder: "Plocha (m&sup2;)",
-				required: true,
 				type: "number"
 			);
 		?>
