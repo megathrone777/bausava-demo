@@ -53,6 +53,7 @@
 
     removeLocal(index) {
       const file = this.locals[index];
+      
       if (file?.preview) {
 				URL.revokeObjectURL(file.preview);
 			}

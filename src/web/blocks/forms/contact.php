@@ -113,7 +113,7 @@
 			<?=
 				button(
 					template: "success",
-					text: "Hotovo",
+					text: getString("success"),
 					type: "button"
 				);
 			?>

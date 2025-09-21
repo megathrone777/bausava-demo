@@ -1,7 +1,7 @@
 <?php
 	$menuItems = [];
 
-	foreach (R::findAll("menu") as $menuItem) {
+	foreach (R::findAll('menu') as $menuItem) {
 		if ($menuItem->section_id) {
 			$section = R::findOne("sections", "id = " . $menuItem->section_id);
 
@@ -59,7 +59,7 @@
 			"
 		>
 			<?php foreach ($menuItems as $menuItem): ?>
-				<li>
+			<li>
 					<a
 						class="
 							font-semibold

@@ -1,7 +1,106 @@
 <?php
+  require_once "helpers/getString.php";
   require_once "theme/button.php";
   require_once "theme/input.php";
   require_once "theme/select.php";
+
+  $requestFields = R::findAll("request_fields");
+
+  function getField(
+    string $label,
+    string $name,
+    string $type,
+    string $placeholder,
+    bool $required,
+    array $options = null,
+    int $min = null
+  ) {
+    $id = "request-field-" . $name;
+    $star = $required ? " *" : "";
+    $isRequired = $required ? "required" : "";
+
+    $fields = array(
+      "checkbox" => <<<HTML
+        <label
+          class="
+            inline-flex
+            items-center
+            gap-2
+            pt-1
+            text-sm text-stone-700
+          "
+        >
+          <input
+            class="-mt-px"
+            id="$id"
+            $isRequired
+            type="checkbox"
+          >
+
+          <span>
+            $label $star
+          </span>
+        </label>
+      HTML,
+
+      "email" => input(
+        id: $id,
+        label: $label,
+        name: $name,
+        placeholder: $placeholder,
+        required: $required > 0,
+        type: $type
+      ),
+
+      "select" => select(
+        id: $id,
+        label: $label,
+        name: $name,
+        options: $options,
+        placeholder: $placeholder,
+        required: $required > 0
+      ),
+
+      "month" => input(
+        id: $id,
+        label: $label,
+        name: $name,
+        placeholder: $placeholder,
+        required: $required > 0,
+        type: $type
+      ),
+
+      "number" => input(
+        id: $id,
+        label: $label,
+        min: $min,
+        name: $name,
+        placeholder: $placeholder,
+        required: $required > 0,
+        type: $type
+      ),
+
+      "tel" => input(
+        id: $id,
+        label: $label,
+        name: $name,
+        placeholder: $placeholder,
+        required: $required > 0,
+        type: $type
+      ),
+
+      "text" => input(
+        id: $id,
+        label: $label,
+        name: $name,
+        placeholder: $placeholder,
+        required: $required > 0,
+        type: $type
+      )
+    );
+
+    echo $fields[$type];
+  }
 ?>
 
 <div
@@ -64,50 +163,18 @@
       "
       data-js-click="handleSuccessReset"
     >
-      <?=
-        select(
-          id: "ground-select",
-          label: "Pozemek",
-          name: "ground",
-          options: [
-            "Mám stavební pozemek",
-            "Potřebuji koupit pozemek",
-            "Potřebuji upravit/zasíťovat pozemek"
-          ],
-          placeholder: "Vyberte",
-          required: true
-        );
-      ?>
-
-      <?=
-        select(
-          id: "project-select",
-          label: "Projekt",
-          name: "project",
-          options: [
-            "Mám hotový projekt",
-            "Mám studii, potřebuji projekt",
-            "Potřebuji kompletní projekt",
-            "Chci upravit typový projekt"
-          ],
-          placeholder: "Vyberte",
-          required: true
-        );
-      ?>
-      
-      <?=
-        select(
-          id: "permission-select",
-          label: "Povolení",
-          name: "permission",
-          options: [
-            "Mám stavební povolení/ohlášení",
-            "Potřebuji vyřídit povolení",
-            "V řízení / připravujeme"
-          ],
-          placeholder: "Vyberte",
-          required: true
-        );
+      <?php
+        foreach(array_slice($requestFields, 0, 3) as $requestField) {
+          getField(
+            label: $requestField->label,
+            min: $requestField->min,
+            name: $requestField->name,
+            options: json_decode($requestField->options) ?? [],
+            placeholder: $requestField->placeholder,
+            required: $requestField->required > 0,
+            type: $requestField->type,
+          );
+        }
       ?>
     </div>
 
@@ -119,58 +186,18 @@
       "
       data-js-click="handleSuccessReset"
     >
-      <?=
-        select(
-          id: "range-select",
-          label: "Rozsah",
-          name: "range",
-          options: [
-            "Hrubá stavba",
-            "Dům na klíč",
-            "Dům na klíč + interiér"
-          ],
-          placeholder: "Vyberte",
-          required: true
-        );
-      ?>
-
-      <?=
-        select(
-          id: "design-select",
-          label: "Konstrukční systém",
-          name: "design",
-          options: [
-            "Zděný",
-            "Dřevostavba",
-            "Jiný / poradit se"
-          ],
-          placeholder: "Nezvoleno"
-        );
-      ?>
-
-      <?=
-        input(
-          id: "budget-input",
-          label: "Rozpočet (Kč)",
-          min: "0",
-          name: "budget",
-          placeholder: "např. 4 500 000",
-          type: "number"
-        );
-      ?>
-
-      <?=
-        select(
-          id: "energy-select",
-          label: "Energetický standard",
-          name: "energy",
-          options: [
-            "A0 (NZÚ)",
-            "A",
-            "B"
-          ],
-          placeholder: "Doporučit"
-        );
+      <?php
+        foreach(array_slice($requestFields, 3, 4) as $requestField) {
+          getField(
+            label: $requestField->label,
+            min: $requestField->min,
+            name: $requestField->name,
+            options: json_decode($requestField->options) ?? [],
+            placeholder: $requestField->placeholder,
+            required: $requestField->required > 0,
+            type: $requestField->type,
+          );
+        }
       ?>
     </div>
 
@@ -182,36 +209,18 @@
       "
       data-js-click="handleSuccessReset"
     >
-      <?=
-        input(
-          id: "square-input",
-          label: "Užitná plocha (m&sup2;)",
-          min: "0",
-          name: "square",
-          placeholder: "např. 120",
-          type: "number"
-        );
-      ?>
-
-      <?=
-        input(
-          id: "rooms-input",
-          label: "Počet pokojů",
-          min: "1",
-          name: "rooms",
-          placeholder: "např. 4",
-          type: "number"
-        );
-      ?>
-
-      <?=
-        input(
-          id: "location-input",
-          label: "Lokalita / parcela",
-          name: "location",
-          placeholder: "Obec, ulice / parc. č.",
-          type: "text"
-        );
+      <?php
+        foreach(array_slice($requestFields, 7, 3) as $requestField) {
+          getField(
+            label: $requestField->label,
+            min: $requestField->min,
+            name: $requestField->name,
+            options: json_decode($requestField->options) ?? [],
+            placeholder: $requestField->placeholder,
+            required: $requestField->required > 0,
+            type: $requestField->type,
+          );
+        }
       ?>
     </div>
 
@@ -223,24 +232,18 @@
       "
       data-js-click="handleSuccessReset"
     >
-      <?=
-        input(
-          id: "model-input",
-          label: "Katalogový dům (volitelné)",
-          name: "model",
-          placeholder: "např. BAU 120",
-          type: "text"
-        );
-      ?>
-
-      <?=
-        input(
-          id: "date-input",
-          label: "Preferovaný termín",
-          name: "date",
-          placeholder: "",
-          type: "month"
-        );
+      <?php
+        foreach(array_slice($requestFields, 10, 2) as $requestField) {
+          getField(
+            label: $requestField->label,
+            min: $requestField->min,
+            name: $requestField->name,
+            options: json_decode($requestField->options) ?? [],
+            placeholder: $requestField->placeholder,
+            required: $requestField->required > 0,
+            type: $requestField->type,
+          );
+        }
       ?>
     </div>
 
@@ -260,40 +263,29 @@
           gap-4
         "
       >
-        <?=
-          input(
-            id: "name-input",
-            label: "Jméno a příjmení",
-            name: "name",
-            placeholder: "Jan Novák",
-            required: true,
-            type: "text"
-          );
-        ?>
-
-        <?=
-          input(
-            id: "phone-input",
-            label: "Telefon",
-            name: "phone",
-            placeholder: "+420 6xx xxx xxx",
-            required: true,
-            type: "tel"
-          );
-        ?>
-
-        <?=
-          input(
-            id: "email-input",
-            label: "E-mail",
-            name: "email",
-            placeholder: "vas@email.cz",
-            required: true,
-            type: "email"
-          );
+        <?php
+          foreach(array_slice($requestFields, 12, 3) as $requestField) {
+            getField(
+              label: $requestField->label,
+              min: $requestField->min,
+              name: $requestField->name,
+              options: json_decode($requestField->options) ?? [],
+              placeholder: $requestField->placeholder,
+              required: $requestField->required > 0,
+              type: $requestField->type,
+            );
+          }
         ?>
       </div>
     </div>
+
+    <?php
+      $filteredFields = array_filter($requestFields, function($key) {
+        return $key->type === "textarea";
+      }, ARRAY_FILTER_USE_BOTH);
+
+      $textareaField = $filteredFields[array_key_first($filteredFields)];
+    ?>
 
     <div data-js-click="handleSuccessReset">
       <label
@@ -304,9 +296,9 @@
           mb-2
           text-xs
         "
-        for="message-input"
+        for="request-textarea-<?= $textareaField->name; ?>"
       >
-        Poznámka
+        <?= $textareaField->label; ?>
       </label>
 
       <textarea
@@ -325,9 +317,9 @@
           w-full
           focus:ring-2 focus:ring-primary
         "
-        id="message-input"
-        name="message"
-        placeholder="Speciální přání, rozpočet, technologie..."
+        id="request-textarea-<?= $textareaField->name; ?>"
+        name="<?= $textareaField->name; ?>"
+        placeholder="<?= $textareaField->placeholder; ?>"
       ></textarea>
     </div>
 
@@ -338,46 +330,25 @@
       "
       data-js-click="handleSuccessReset"
     >
-      <label
-        class="
-          inline-flex
-          items-center
-          gap-2
-          pt-1
-          text-sm text-stone-700
-        "
-      >
-        <input
-          class="-mt-px"
-          id="gdpr-input"
-          required
-          type="checkbox"
-        >
-
-        <span>
-          Souhlasím se zpracováním osobních údajů pro vyřízení poptávky (GDPR). *
-        </span>
-      </label>
-
-      <label
-        class="
-          inline-flex
-          items-center
-          gap-2
-          pt-1
-          text-sm text-stone-700
-        "
-      >
-        <input
-          class="-mt-px"
-          id="marketing-input"
-          type="checkbox"
-        >
-
-        <span>
-          Souhlasím s informacemi o souvisejících službách (volitelné).
-        </span>
-      </label>
+      <?php
+        $filteredFields = array_filter($requestFields, function($key) {
+          return $key->type === "checkbox";
+        }, ARRAY_FILTER_USE_BOTH);
+      ?>
+      
+      <?php
+        foreach($filteredFields as $requestField) {
+          getField(
+            label: $requestField->label,
+            min: $requestField->min,
+            name: $requestField->name,
+            options: json_decode($requestField->options) ?? [],
+            placeholder: $requestField->placeholder,
+            required: $requestField->required > 0,
+            type: $requestField->type,
+          );
+        }
+      ?>
     </div>
 
     <div
@@ -396,7 +367,7 @@
           relative
           min-w-[150px]
           w-full
-          md:inline-flex md:flex-row md:min-h-10 md:w-auto md:items-center
+          md:w-[150px] md:basis-[150px] md:min-h-10 md:items-stretch
         "
       >
         <template data-js-if="isLoading">
@@ -413,17 +384,25 @@
           <?=
             button(
               template: "success",
-              text: "Hotovo",
+              text: getString("success"),
               type: "button"
             );
           ?>
         </template>
 
+        <?php
+          $filteredFields = array_filter($requestFields, function($key) {
+            return $key->type === "submit";
+          }, ARRAY_FILTER_USE_BOTH);
+
+          $submitField = $filteredFields[array_key_first($filteredFields)];
+        ?>
+
         <template data-js-if="!isSuccess && !isLoading">
           <?=
             button(
               template: "primary",
-              text: "Odeslat poptávku",
+              text: $submitField->label,
               type: "submit"
             );
           ?>

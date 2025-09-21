@@ -42,6 +42,10 @@ const initOverrides = () => {
   );
 
   Alpine.mapAttributes(
+    startingWith("data-js-change", Alpine.prefixed("on:change"))
+  );
+
+  Alpine.mapAttributes(
     startingWith("data-js-click", Alpine.prefixed("on:click"))
   );
 

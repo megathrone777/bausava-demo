@@ -15,7 +15,6 @@
 		},
 
 		handleSelect(event) {
-			this.dataTransfer = event.dataTransfer.files
 			this.updateFileList(event.target.files)
 		},
 
@@ -66,7 +65,7 @@
 		</p>
 
 		<input
-			@change="updateFileList"
+			data-js-change="handleSelect"
 			class="hidden"
 			data-js-ref="file-input"
 			multiple
