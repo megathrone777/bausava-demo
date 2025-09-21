@@ -185,6 +185,12 @@
 										value="<?= $requestField->min; ?>"
 										style="width: 40px;"
 									>
+								<?php else: ?>
+									<input
+										name="min"
+										type="hidden"
+										value=""
+									>
 								<?php endif; ?>
 							</td>
 
