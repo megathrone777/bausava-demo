@@ -108,7 +108,7 @@
 						$defaultClasses
 						$templateClasses
 						inline-block
-						leading-9
+						leading-[34px]
 						no-underline
 						md:leading-[38px]
 					"
