@@ -3,7 +3,7 @@
 
 	$id = $_POST["id"];
 	$label = $_POST["label"];
-	$min = $_POST["min"];
+	$min = is_numeric($_POST["min"]) ? $_POST["min"] : null;
 	$placeholder = empty($_POST["placeholder"]) ? null : $_POST["placeholder"];
 	$options = empty($_POST["options"]) ? null : $_POST["options"];
 
