@@ -44,12 +44,12 @@
 						block
 						border-none
 						font-medium
-						h-[39px]
+						h-10
 						px-3
 						placeholder:text-gray placeholder:font-medium
 						rounded-xl
 						ring ring-secondary
-						text-black text-base
+						text-black text-[16px]
 						w-full
 						transition-shadow
 						focus:ring-2 focus:ring-primary

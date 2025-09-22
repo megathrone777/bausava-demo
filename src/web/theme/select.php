@@ -36,7 +36,7 @@
 					class="
 						border-0
 						font-medium
-						h-[39px]
+						h-10
 						leading-none
 						px-3
 						ring ring-secondary
