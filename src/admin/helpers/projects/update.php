@@ -3,6 +3,7 @@
 
 	$id = $_POST["id"];
 	$badges = $_POST["badges"];
+	$category = $_POST["category"];
 	$description = $_POST["description"];
 	$features = $_POST["features"];
 	$price = $_POST["price"];
@@ -20,6 +21,7 @@
 	}
 
 	$project = R::load("projects", $id);
+	$project->category = $category;
 	$project->description = $description;
 	$project->title = $title;
 	$project->price = $price;
