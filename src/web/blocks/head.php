@@ -71,7 +71,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta content="initial-scale=1.0, width=device-width" name="viewport">
+	<meta content="initial-scale=1.0, interactive-widget=resizes-content, width=device-width" name="viewport">
 	<meta content="<?= $serverUrl; ?>" property="og:url">
 	<meta content="Výstavba rodínnych domu na klíč,rekonstrukce bytu a komerčních prostor v Praze a po celé Česke Republice" property="og:title">
 	<meta content="Výstavba a rekonstrukce prostor v České republice" property="og:description">

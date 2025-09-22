@@ -1,5 +1,6 @@
 import Alpine from "alpinejs";
 import AlpineFocus from "@alpinejs/focus";
+import Hammer from "hammerjs";
 import { Fancybox } from "@fancyapps/ui/dist/fancybox";
 import { Carousel } from "@fancyapps/ui/dist/carousel";
 import { Arrows } from "@fancyapps/ui/dist/carousel/carousel.arrows";
@@ -8,12 +9,16 @@ import { Thumbs } from "@fancyapps/ui/dist/carousel/carousel.thumbs";
 
 import { initOverrides } from "./alpine-overrides";
 
-window.Arrows = Arrows;
-window.Carousel = Carousel;
-window.Fancybox = Fancybox;
-window.Lazyload = Lazyload;
-window.Thumbs = Thumbs;
+document.addEventListener("alpine:init", () => {
+  window.Arrows = Arrows;
+  window.Carousel = Carousel;
+  window.Fancybox = Fancybox;
+  window.Hammer = Hammer;
+  window.Lazyload = Lazyload;
+  window.Thumbs = Thumbs;
 
-Alpine.plugin([AlpineFocus]);
-initOverrides();
+  Alpine.plugin([AlpineFocus]);
+  initOverrides();
+});
+
 Alpine.start();

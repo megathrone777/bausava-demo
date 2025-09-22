@@ -1,7 +1,9 @@
 <?php
+	require_once "helpers/getString.php";
+
 	$menuItems = [];
 
-	foreach (R::findAll('menu') as $menuItem) {
+	foreach (R::findAll("menu") as $menuItem) {
 		if ($menuItem->section_id) {
 			$section = R::findOne("sections", "id = " . $menuItem->section_id);
 
@@ -37,14 +39,15 @@
 		transition-[opacity,transform,visibility]
 		top-16
 		[transform:translate3d(0,-20px,0)]
+		z-20
 		lg:h-auto
-		lg:visible lg:opacity-100 lg:pointer-events-auto lg:transition-none
+		lg:visible lg:opacity-100 lg:transition-none
 		lg:static lg:bg-none lg:backdrop-blur-none lg:p-0 lg:transform-none
 	"
 	data-js-class="
 		isOpened
-			? 'opacity-100 visible [transform:translate3d(0,0,0)] pointer-events-auto'
-			: 'opacity-0 invisible [transform:translate3d(0,-20px,0)] pointer-events-none lg:pointer-events-auto lg:opacity-100 lg:visible lg:transform-none'
+			? 'opacity-100 visible [transform:translate3d(0,0,0)]'
+			: 'opacity-0 invisible [transform:translate3d(0,-20px,0)] lg:opacity-100 lg:visible lg:transform-none'
 	"
 	data-js-trap.noscroll="isOpened"
 >
@@ -59,19 +62,138 @@
 			"
 		>
 			<?php foreach ($menuItems as $menuItem): ?>
-			<li>
+				<li
+					<?php if ($menuItem->submenu): ?>
+						class="group lg:relative"
+						data-js-data="{
+							subMenuIsOpened: false,
+							swipe: '',
+							tap: '',
+
+							toggleSubMenu() {
+								this.subMenuIsOpened = !this.subMenuIsOpened
+							}
+						}"
+						data-js-init="
+							const hammer = new Hammer($el)
+							
+							hammer.on('swipeleft', () => {
+								subMenuIsOpened = false
+								window.scrollTo({ top: 0 })
+							})
+
+							hammer.on('tap', (event) => {
+								subMenuIsOpened = true
+							})
+						"
+					<?php endif; ?>
+				>
 					<a
 						class="
 							font-semibold
-							text-xl text-black
+							text-black text-xl
 							hover:opacity-70
-							lg:font-normal lg:text-base lg:text-inherit
+							lg:font-normal lg:text-base
+
+							<?php	if ($menuItem->submenu && str_contains($_SERVER['REQUEST_URI'], "/" . $menuItem->submenu)): ?>
+								opacity-70
+							<?php endif; ?>
 						"
-						data-js-click="closeMenu"
 						href="<?= $menuItem->url !== '/' ? '/' . $menuItem->url : '/' ?>"
+
+						<?php if ($menuItem->submenu && !str_contains($_SERVER['REQUEST_URI'], "/" . $menuItem->submenu)): ?>
+							@tap="tap = 'tap'"
+						<?php elseif (str_contains($_SERVER['REQUEST_URI'], "/" . $menuItem->submenu)): ?>
+							data-js-click="
+								if (window.innerWidth < 1024) {
+									closeMenu()
+								}
+							"
+						<?php endif; ?>
 					>
 						<?= $menuItem->title; ?>
 					</a>
+
+					<?php if ($menuItem->submenu): ?>
+						<?php	$subMenuItems = R::findAll($menuItem->submenu); ?>
+
+						<ul
+							class="
+								bottom-0
+								absolute
+								flex flex-col
+								gap-y-5
+								gradient
+								h-[calc(100dvh-64px)]
+								items-center
+								justify-center
+								left-0
+								max-w-full
+								pb-6
+								right-0
+								text-center text-white
+								transition-transform
+								top-0
+								w-full
+								z-50
+								[transform:translate3d(-100%,0,0)]
+								lg:border lg:border-secondary
+								lg:-translate-x-1/2 lg:absolute lg:overflow-visible
+								lg:group-hover:animate-fade-in-down lg:group-hover:pointer-events-auto
+								lg:left-1/2 lg:min-w-55 lg:gap-y-3.5 lg:transform-none
+								lg:opacity-0 lg:pointer-events-none lg:rounded-xl lg:transition-none
+								lg:top-[calc(100%+30px)] lg:z-[51] lg:p-4 lg:text-black
+								lg:bottom-auto lg:h-auto lg:w-fit lg:max-w-none
+								lg:before:content-[''] lg:before:bottom-full lg:before:min-h-8
+								lg:before:absolute lg:before:w-full
+							"
+							data-js-class="
+								subMenuIsOpened
+									? '[transform:translate3d(0,0,0)]'
+									: 'pointer-events-none [transform:translate3d(-100%,0,0)]'
+							"
+							@swipeleft="swipe = 'swipeleft'"
+						>
+							<li
+								class="
+									absolute
+									cursor-default
+									font-semibold
+									left-4
+									text-lg text-primary
+									top-10
+									lg:hidden
+								"
+								data-js-click="
+									toggleSubMenu()
+									window.scrollTo({ top: 0 })
+								"
+							>
+								&lt; <?= getString("backButton"); ?>
+							</li>
+
+							<?php foreach ($subMenuItems as $subMenuItem): ?>
+								<li>
+									<a
+										class="
+											block
+											font-medium
+											text-xl text-black
+											transition-colors
+											hover:text-primary
+											lg:text-base lg:whitespace-nowrap
+											<?php if ('/' . str_replace('_', '-', $menuItem->submenu) . '/' . $subMenuItem->slug == $_SERVER['REQUEST_URI']): ?>
+											text-primary
+											<?php endif; ?>
+										"
+										href="/services/<?= $subMenuItem->slug; ?>"
+									>
+										<?= $subMenuItem->name; ?>
+									</a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
 				</li>
 			<?php endforeach; ?>
 		</ul>

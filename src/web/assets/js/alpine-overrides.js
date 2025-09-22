@@ -62,10 +62,6 @@ const initOverrides = () => {
   );
 
   Alpine.mapAttributes(
-    startingWith("data-js-swipe-left", Alpine.prefixed("swipe:left"))
-  );
-
-  Alpine.mapAttributes(
     startingWith("data-js-submit", Alpine.prefixed("on:submit"))
   );
 };
