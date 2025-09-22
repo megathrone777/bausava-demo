@@ -76,9 +76,10 @@
 					>
 						<span
 							class="
+								cursor-default
 								font-semibold
 								text-black text-xl
-								hover:opacity-70
+								group-hover:opacity-70
 								lg:font-normal lg:text-base
 
 								<?php	if ($menuItem->submenu && str_contains($_SERVER['REQUEST_URI'], "/" . $menuItem->submenu)): ?>
