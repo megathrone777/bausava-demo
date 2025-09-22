@@ -14,7 +14,7 @@
 				include_once "pages/calculate.php";
 				break;
 			case "/admin/calculator":
-				include_once "pages/calculator.php";
+				include_once "pages/calculator/index.php";
 				break;
 			case "/admin/houses":
 				include_once "pages/houses.php";

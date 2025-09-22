@@ -4,7 +4,7 @@
 	$id = $_POST["id"];
 
 	if (isset($id)) {
-		R::trash("projects", $id);
-		header("Location: /admin/projects");
+		R::trash("conditions", $id);
+		header("Location: /admin/calculator");
 	}
 ?>

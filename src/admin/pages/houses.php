@@ -102,6 +102,15 @@
 							>
 								<i class="fa-regular fa-pen-to-square"></i>
 							</button>
+
+							<button
+								class="btn btn-danger"
+								data-bs-toggle="modal"
+								data-bs-target="#delete-house-<?= $house->id; ?>"
+								type="button"
+							>
+								<i class="fa-regular fa-trash-can"></i>
+							</button>
 						</td>
 					</tr>
 
@@ -278,6 +287,48 @@
 												</div>
 											<?php endforeach; ?>
                     </div>
+									</div>
+
+									<div class="modal-footer">
+										<button
+											class="btn btn-success pull-left"
+											type="submit"
+										>
+											<i class="fa-regular fa-floppy-disk"></i>
+										</button>
+
+										<button
+											class="btn btn-danger"
+											data-bs-dismiss="modal"
+											type="button"
+										>
+											<i class="fa-solid fa-ban"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<div
+						class="modal fade"
+						id="delete-house-<?= $house->id; ?>"
+						role="dialog"
+					>
+						<div class="modal-dialog">
+							<form
+								action="/src/admin/helpers/houses/delete.php"
+								class="form-delete"
+								method="POST"
+							>
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title">Подтвердить</h4>
+									</div>
+
+									<div class="modal-body">
+										<input type="hidden" name="id" value="<?= $house->id; ?>">
+										<p>Вы уверены, что хотите удалить <?= $house->title; ?>?</p>
 									</div>
 
 									<div class="modal-footer">
