@@ -13,7 +13,7 @@
 <hr>
 
 <div class="row">
-	<div class="col-3">
+	<div class="col">
 		<form
 			action="/src/admin/helpers/settings/update.php"
 			enctype="multipart/form-data"

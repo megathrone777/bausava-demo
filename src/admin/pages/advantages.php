@@ -49,8 +49,8 @@
 <hr>
 
 <div class="row">
-  <div class="col-7">
-    <table class="table table-bordered table-condensed">
+  <div class="col">
+    <table class="table table-bordered table-condensed w-auto">
       <thead>
         <tr>
           <th>Title</th>

@@ -349,7 +349,7 @@
 														"existingUrls" => $project->images,
 														"itemId" => $project->id,
 														"maxFiles" => 50,
-														"tableName" => "project"
+														"tableName" => "projects"
 													)
 												);
 											?>

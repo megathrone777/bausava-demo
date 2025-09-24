@@ -50,8 +50,8 @@
 <hr>
 
 <div class="row">
-  <div class="col-7">
-    <table class="align-middle table table-bordered table-condensed">
+  <div class="col">
+    <table class="align-middle table table-bordered table-condensed w-auto">
       <thead>
         <tr>
           <th>Заголовок</th>

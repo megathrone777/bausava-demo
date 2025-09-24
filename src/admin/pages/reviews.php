@@ -7,7 +7,7 @@
 ?>
 
 <div class="row">
-	<div class="align-items-start col-8 d-inline-flex flex-column">
+	<div class="align-items-start col d-inline-flex flex-column">
 		<form
 			action="/src/admin/helpers/string/update.php"
 			class="
@@ -71,8 +71,8 @@
 <hr>
 
 <div class="row">
-  <div class="col-7">
-    <table class="align-middle table table-bordered table-condensed">
+  <div class="col">
+    <table class="align-middle table table-bordered table-condensed w-auto">
       <thead>
         <tr>
           <th>Title</th>

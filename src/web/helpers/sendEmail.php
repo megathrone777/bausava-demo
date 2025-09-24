@@ -70,8 +70,11 @@
 		$mail->isSMTP();
 		$mail->Host = $_ENV["MAIL_HOST"];
 		$mail->Port = $_ENV["MAIL_PORT"];
-		$mail->SMTPAuth = false;
-		$mail->SMTPSecure = false;
+		$mail->SMTPAuth = true;
+		$mail->Username = "info@bausava.eu";
+    $mail->Password = 'zqUbQsa(N7/~S`51`h*8';
+		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+
 
 		$mail->CharSet = "UTF-8";
 		$mail->Encoding = "base64";

@@ -87,6 +87,12 @@
 <hr>
 
 <div class="row">
+	<?php include_once "types.php"; ?>
+</div>
+
+<hr>
+
+<div class="row">
 	<?php include_once "locations.php"; ?>
 	<?php include_once "conditions.php"; ?>
 	<?php include_once "standards.php"; ?>

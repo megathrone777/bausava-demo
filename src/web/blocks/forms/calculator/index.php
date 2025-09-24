@@ -2,6 +2,8 @@
 	$conditions = R::findAll("conditions");
 	$locations = R::findAll("locations");
 	$standards = R::findAll("standards");
+	$flat = R::findOne("calculator_types", "name = ?", ["flat"]);
+	$house = R::findOne("calculator_types", "name = ?", ["house"]);
 
 	$conditionsFactors = array_reduce($conditions, function($carry, $condition) {
 		$carry .= "'" . $condition->name . "':'" . $condition->factor . "',";
@@ -60,7 +62,7 @@
 
     	return {
 				localityFactor: +factors[this.location] ?? 1.0,
-				pricePerM2: this.type === 'house' ? 60000 : 90000,
+				pricePerM2: this.type === 'house' ? +'<?= $house->price; ?>' : +'<?= $flat->price; ?>',
 			}
 		},
 

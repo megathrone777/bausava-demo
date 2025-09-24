@@ -1,17 +1,17 @@
 <?php
   require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/rb-mysql.php";
 
-  if (file_exists($_SERVER["DOCUMENT_ROOT"] . "/.env")) {
-    $_ENV = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/.env");
-  }
+  // if (file_exists($_SERVER["DOCUMENT_ROOT"] . "/.env")) {
+  //   $_ENV = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/.env");
+  // }
 
-  $_ENV["MAIL_HOST"] = "127.0.0.1";
-  $_ENV["MAIL_PORT"] = 1025;
+  $_ENV["MAIL_HOST"] = "smtp.websupport.cz";
+  $_ENV["MAIL_PORT"] = 465;
 
   R::setup(
-    "mysql:host=" . $_ENV["DB_HOST"] . ";dbname=" . $_ENV["DB_NAME"] . ";port=" . $_ENV["DB_PORT"],
-    $_ENV["DB_USERNAME"],
-    $_ENV["DB_PASSWORD"]
+    "mysql:host=" . "dbadmin.bausava.eu" . ";dbname=" . "okYuqdiS" . ";port=" . "3306",
+    "newbs",
+    'Qmo]~VWz$zIzXAK15[Lj'
   );
 
   $strings = R::findAll("strings");

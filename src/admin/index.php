@@ -12,11 +12,13 @@
 		<main>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-2">
+          <div class="col-lg-2">
             <?php include_once "blocks/sidebar.php"; ?>
           </div>
 			
-					<?php include_once "blocks/routes.php"; ?>
+					<div class="col-lg-10 pb-3 pt-3">
+						<?php include_once "blocks/routes.php"; ?>
+					</div>
 				</div>
 			</div>
 		</main>

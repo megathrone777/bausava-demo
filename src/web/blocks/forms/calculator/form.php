@@ -6,9 +6,17 @@
 	$calculatorTitle = getString("calculatorTitle");
 	$calculatorText = getString("calculatorText");
 
+	$conditionsOptions = array_map(function($condition) {
+		return $condition->name;
+	}, $conditions);
+
 	$locationsOptions = array_map(function($location) {
 		return $location->name;
 	}, $locations);
+
+	$standardsOptions = array_map(function($standard) {
+		return $standard->name;
+	}, $standards);
 ?>
 
 <div>
@@ -74,7 +82,7 @@
 					type="button"
 					value="flat"
 				>
-					Byt
+					<?= $flat->title; ?>
 				</button>
 
 				<button
@@ -97,7 +105,7 @@
 					type="button"
 					value="house"
 				>
-					Dům
+					<?= $house->title; ?>
 				</button>
 			</div>
 		</div>
@@ -129,12 +137,7 @@
 				id: "condition-select",
 				label: "Stav",
 				model: "condition",
-				options: array(
-					"Novostavba",
-					"Po rekonstrukci",
-					"Standard",
-					"K rekonstrukci"
-				),
+				options: $conditionsOptions,
 				name: "condition",
 			);
 		?>
@@ -144,11 +147,7 @@
 				id: "standard-select",
 				label: "Standard vybavení",
 				model: "standard",
-				options: array(
-					"Standard",
-					"Nadstandard",
-					"Premium"
-				),
+				options: $standardsOptions,
 				name: "standard",
 			);
 		?>

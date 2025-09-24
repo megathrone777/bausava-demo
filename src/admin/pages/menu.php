@@ -9,7 +9,7 @@
 <hr>
 
 <div class="row">
-  <div class="col-lg-10">
+  <div class="col">
     <table class="table table-bordered table-condensed w-auto">
       <thead>
         <tr>
