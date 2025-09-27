@@ -418,20 +418,18 @@
 											</div>
 										</div>
 
-										<?php if ($service->packages && count(json_decode($service->packages, false)) > 0): ?>
+										<?php if ($service->has_packages): ?>
 											<hr>
 
 											<div class="mb-5">
-												<?php if ($service->packages_title): ?>
-													<div class="mb-4">
-														<input
-															class="form-control fw-bold"
-															name="packagesTitle"
-															type="text"
-															value="<?= $service->packages_title; ?>"
-														>
-													</div>
-												<?php endif; ?>
+												<div class="mb-4">
+													<input
+														class="form-control fw-bold"
+														name="packagesTitle"
+														type="text"
+														value="<?= $service->packages_title; ?>"
+													>
+												</div>
 
 												<div
 													class="

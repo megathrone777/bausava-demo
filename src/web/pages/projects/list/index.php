@@ -20,8 +20,6 @@
 
 		async loadCategoryProjects(categoryId, categorySlug, categoryTitle) {
 			if (this.categoryId === +categoryId) return
-			this.loadedProjects = []
-			this.initialProjects = []
 			this.categoryId = categoryId
 			this.categoryTitle = categoryTitle
 			this.isLoading = true

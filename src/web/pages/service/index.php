@@ -40,7 +40,15 @@
 				if ($service->catalog) {
 					include_once "houses/index.php";
 				}
+			?>
 
+			<?php if ($service->has_calculator): ?>
+				<div class="box px-2">
+					<?php	include_once "blocks/forms/calculator/index.php"; ?>
+				</div>
+			<?php endif; ?>
+
+			<?php
 				if ($service->steps && count(json_decode($service->steps, false)) > 0) {
 					include_once "steps.php";
 				}
@@ -68,6 +76,10 @@
 
 				if ($service->has_form) {
 					include_once "request.php";
+				}
+
+				if ($service->has_advantages) {
+					include_once "advantages.php";
 				}
 			?>
 		</div>

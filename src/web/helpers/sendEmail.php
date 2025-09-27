@@ -10,8 +10,9 @@
 	use PHPMailer\PHPMailer\SMTP;
 	use PHPMailer\PHPMailer\Exception;
 
-	$email = R::findOne("contacts", "id = 2")->title;
-	$logoUrl = R::findOne("settings", "id = 1")->image;
+	$setting = R::findOne("settings", "id = 1");
+	$logo = $setting->image;
+	$email = $setting->email;
 	$emailHtml = "";
 	$fields = array("title" => $_POST["title"]);
 
@@ -27,11 +28,11 @@
 	} elseif ($_POST["template"] == "request") {
 		require_once $root . "/src/web/blocks/emailTemplates/request.php";
 
-		if (!empty($_FILES['files']) && is_array($_FILES['files']['name'])) {
-			$names = $_FILES['files']['name'];
-			$tmps  = $_FILES['files']['tmp_name'];
-			$errs  = $_FILES['files']['error'];
-			$sizes = $_FILES['files']['size'];
+		if (!empty($_FILES["files"]) && is_array($_FILES["files"]["name"])) {
+			$names = $_FILES["files"]["name"];
+			$tmps = $_FILES["files"]["tmp_name"];
+			$errs = $_FILES["files"]["error"];
+			$sizes = $_FILES["files"]["size"];
 
 			$maxSize = 10 * 1024 * 1024;
 			$allowed = null;
@@ -72,15 +73,14 @@
 		$mail->Port = $_ENV["MAIL_PORT"];
 		$mail->SMTPAuth = true;
 		$mail->Username = "info@bausava.eu";
-    $mail->Password = 'zqUbQsa(N7/~S`51`h*8';
+    $mail->Password = "zqUbQsa(N7/~S`51`h*8";
 		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-
 
 		$mail->CharSet = "UTF-8";
 		$mail->Encoding = "base64";
 
-		$mail->addEmbeddedImage($root . $logoUrl, "logo_cid", "logo.png", "base64", "image/png");
-		$mail->setFrom($email, "BAUSAVA");
+		$mail->addEmbeddedImage($root . $logo, "logo_cid", "logo.png", "base64", "image/png");
+		$mail->setFrom("info@bausava.eu", "BAUSAVA");
 		$mail->addAddress($email, "BAUSAVA");
 
 		$mail->isHTML(true);

@@ -590,12 +590,12 @@
 
 					<div class="mb-3">
 						<label class="form-label">Images</label>
-						
+
 						<?php
 							includeWith(
 								"theme/dropzone.php",
 								array(
-									"maxFiles" => 5,
+									"maxFiles" => 50,
 								)
 							);
 						?>

@@ -62,21 +62,23 @@
 						data-js-src="project.image"
 					>
 
-					<p
-						class="
-							absolute
-							bg-white/95
-							border border-secondary
-							font-semibold
-							left-3
-							px-2
-							py-1
-							rounded-full
-							text-xs
-							top-3
-						"
-						data-js-text="project.type"
-					></p>
+					<template data-js-if="project.type && project.type.length > 0">
+						<p
+							class="
+								absolute
+								bg-white/95
+								border border-secondary
+								font-semibold
+								left-3
+								px-2
+								py-1
+								rounded-full
+								text-xs
+								top-3
+							"
+							data-js-text="project.type"
+						></p>
+					</template>
 				</div>
 
 				<div class="grow p-5">
@@ -84,7 +86,7 @@
 						class="font-semibold mb-1"
 						data-js-html="project.title"
 					></p>
-
+					
 					<p
 						class="
 							font-bold
@@ -106,25 +108,27 @@
 							data-js-key="`project-badge-${project.id}-${badgeIndex}`"
 							data-js-for="(badge, badgeIndex) in project.badges"
 						>
-							<li
-								class="
-									flex
-									gap-2
-									items-center
-								"
-							>	
-								<i
+							<template data-js-if="badge && badge.length > 0">
+								<li
 									class="
-										bg-primary
-										h-2
-										inline-block
-										rounded-full
-										w-2
+										flex
+										gap-2
+										items-center
 									"
-								></i>
+								>	
+									<i
+										class="
+											bg-primary
+											h-2
+											inline-block
+											rounded-full
+											w-2
+										"
+									></i>
 
-								<span data-js-html="badge"></span>
-							</li>
+									<span data-js-html="badge"></span>
+								</li>
+							</template>
 						</template>
 					</ul>
 				</div>

@@ -2,6 +2,7 @@
 	x-data="{
 		content: '<?= trim($editorValue); ?>'
 	}"
+	init="$watch('content', (val) => { console.log(val) })"
 	class="
 		bg-gray-300
 		border border-gray-900
@@ -14,10 +15,10 @@
 	<input
 		name="<?= $editorName; ?>"
 		type="hidden"
-		:value="content.trim()"
+		:value="content"
 	>
 
-	<alpine-editor x-model="content">
+	<alpine-editor x-model="content" x-ref="editor">
 		<div class="d-flex gap-2" data-type="menu">
 			<button
 				class="btn btn-sm btn-light"
@@ -38,6 +39,11 @@
 			</button>
 		</div>
 
-		<div class="pt-3 px-3" data-type="editor"></div>
+		<div
+			class="pt-3 px-3"
+			data-type="editor"
+			@keydown="(event) => $refs.editor._x_model.set(event.target.innerHTML)"
+		>
+		</div>
 	</alpine-editor>
 </div>

@@ -10,24 +10,29 @@
 		string $url,
 	) {
 		$badgesList = implode("", array_map(function($badge) {
-			return '
-				<li
-					class="
-						flex
-						gap-2
-						items-center
-						min-h-5
-					"
-				>	
-					<i
+			if ($badge && strlen($badge) > 0) {
+				return '
+					<li
 						class="
-							bg-primary
-							h-2
-							inline-block
-							rounded-full
-							w-2
+							flex
+							gap-2
+							items-center
+							min-h-5
 						"
-					></i><span>' . $badge .	'</span></li>';
+					>	
+						<i
+							class="
+								bg-primary
+								h-2
+								inline-block
+								rounded-full
+								w-2
+							"
+						></i><span>' . $badge .	'</span></li>';
+			}
+
+			return null;
+
 		}, $badges));
 		$btnText = getString("detailButton");
 

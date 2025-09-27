@@ -125,7 +125,7 @@
 
 	<?=
 		button(
-			href: "#contacts",
+			href: "/#contacts",
 			template: "primary",
 			text: "Chci přesný odhad a plán zhodnocení"
 		);

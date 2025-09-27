@@ -1,7 +1,7 @@
 <?php
 	require_once "helpers/includeWith.php";
 
-	$logo = R::findOne("settings", "id = 1");
+	$setting = R::findOne("settings", "id = 1");
 ?>
 
 <div class="row">
@@ -20,13 +20,26 @@
 			method="POST"
 		>
 			<div class="mb-3">
+				<label class="form-label" for="email">Mailbox</label>
+
+				<input
+					class="form-control"
+					id="email"
+					name="email"
+					required
+					type="email"
+					value="<?= $setting->email; ?>"
+				>
+			</div>
+
+			<div class="mb-3">
 				<label class="form-label">Logo</label>
 
 				<?php
 					includeWith(
 						"blocks/uploader/single.php",
 						array(
-							"existingUrl" => $logo->image,
+							"existingUrl" => $setting->image,
 							"itemId" => 1,
 							"tableName" => "settings"
 						)

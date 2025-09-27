@@ -1,11 +1,18 @@
 <?php
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/config.php";
 
-	$newPassword = empty($_POST["password"]) ? null : $_POST["password"];
-	$user = R::load("users", "1");
+	$email = empty($_POST["email"]) ? null : $_POST["email"];
+	$password = empty($_POST["password"]) ? null : $_POST["password"];
 
-	if ($newPassword) {
-		$user->password = password_hash($newPassword, PASSWORD_DEFAULT);
+	if ($email) {
+		$settings = R::load("settings", "1");
+		$settings->email = $email;
+		R::store($settings);
+	}
+
+	if ($password) {
+		$user = R::load("users", "1");
+		$user->password = password_hash($password, PASSWORD_DEFAULT);
 		R::store($user);
 	}
 

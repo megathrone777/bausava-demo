@@ -3,7 +3,7 @@
 	require_once "theme/icon.php";
 	require_once "helpers/getString.php";
 	
-	$items = R::findAll("advantages");
+	$advantages = R::findAll("advantages");
 ?>
 
 <div class="py-12 md:py-16">
@@ -37,13 +37,13 @@
 					text-sm
 				"
 			>
-				<?php foreach($items as $item): ?>
+				<?php foreach($advantages as $advantages): ?>
 					<li class="flex gap-2.5">
 						<i class="h-5 inline-block">
 							<?php	icon("check"); ?>
 						</i>
 						
-						<?= $item->title; ?>
+						<?= $advantage->title; ?>
 					</li>
 				<?php endforeach; ?>
 			</ul>
