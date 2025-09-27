@@ -20,6 +20,7 @@
 
 		async loadCategoryProjects(categoryId, categorySlug, categoryTitle) {
 			if (this.categoryId === +categoryId) return
+			this.loadedProjects = []
 			this.categoryId = categoryId
 			this.categoryTitle = categoryTitle
 			this.isLoading = true
@@ -96,7 +97,7 @@
 			gap-4
 			grid
 			mb-6
-			min-h-96
+			min-h-48
 			sm:grid-cols-2
 			lg:grid-cols-4
 		"

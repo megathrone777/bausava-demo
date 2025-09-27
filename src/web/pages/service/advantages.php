@@ -35,7 +35,7 @@
 				text-sm
 			"
 		>
-			<?php foreach($advantages as $advantages): ?>
+			<?php foreach($advantages as $advantage): ?>
 				<li class="flex gap-2.5">
 					<i class="h-5 inline-block">
 						<?php	icon("check"); ?>
