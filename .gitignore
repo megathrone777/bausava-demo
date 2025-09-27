@@ -7,4 +7,5 @@
 .parcel-cache
 .vscode/*
 node_modules
+uploads/
 yarn.lock
