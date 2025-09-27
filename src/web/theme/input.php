@@ -9,7 +9,7 @@
 		string $model = null,
 		bool $required = false,
 	) {
-		$isRequired = $required ? "required" : "";
+		$isRequired = $required ? "required title='" . "Povinné pole'" : "";
 		$placeholderText = $required ? $placeholder . " *" : $placeholder;
 		$inputId = $id ? "id=" . $id : "";
 		$model = $model ? "data-js-model=" . $model : "";
@@ -58,6 +58,7 @@
 					$inputMin
 					$model
 					maxlength="50"
+					pattern=".*\S+.*"
 					name="$name"
 					placeholder="$placeholderText"
 					$isRequired
