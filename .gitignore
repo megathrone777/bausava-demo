@@ -1,7 +1,7 @@
-.env
 .idea
 .parcel-cache
 .vscode
+build
 node_modules
 uploads
 yarn.lock
