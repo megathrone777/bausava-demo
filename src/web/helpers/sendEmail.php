@@ -12,11 +12,11 @@
 
 	$setting = R::findOne("settings", "id = 1");
 	$logo = $setting->image;
-	$email = $setting->email;
+	$email = $_ENV["MAIL_TO"] ? $_ENV["MAIL_TO"] : $setting->email;
 	$emailHtml = "";
 	$fields = array("title" => $_POST["title"]);
 
-	$mail = new PHPMailer(true);
+	$mailer = new PHPMailer(true);
 
 	if ($_POST["template"] == "contacts") {
 		require_once $root . "/src/web/blocks/emailTemplates/contacts.php";
@@ -52,7 +52,7 @@
 
 				if ($sizes[$i] > $maxSize) continue;
 
-				$mail->addAttachment($tmp, $name);
+				$mailer->addAttachment($tmp, $name);
 			}
 		}
 
@@ -68,31 +68,31 @@
 	}
 
 	try {
-		$mail->isSMTP();
-		$mail->Host = $_ENV["MAIL_HOST"];
-		$mail->Port = $_ENV["MAIL_PORT"];
-		$mail->SMTPAuth = true;
-		$mail->Username = "info@bausava.eu";
-    $mail->Password = "zqUbQsa(N7/~S`51`h*8";
-		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+		$mailer->isSMTP();
+		$mailer->Host = "smtp.websupport.cz";
+		$mailer->Port = 465;
+		$mailer->SMTPAuth = true;
+		$mailer->Username = "info@bausava.eu";
+    $mailer->Password = "zqUbQsa(N7/~S`51`h*8";
+		$mailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 
-		$mail->CharSet = "UTF-8";
-		$mail->Encoding = "base64";
+		$mailer->CharSet = "UTF-8";
+		$mailer->Encoding = "base64";
 
-		$mail->addEmbeddedImage($root . $logo, "logo_cid", "logo.png", "base64", "image/png");
-		$mail->setFrom("info@bausava.eu", "BAUSAVA");
-		$mail->addAddress($email, "BAUSAVA");
+		$mailer->addEmbeddedImage($root . $logo, "logo_cid", "logo.png", "base64", "image/png");
+		$mailer->setFrom("info@bausava.eu", "BAUSAVA");
+		$mailer->addAddress($email, "BAUSAVA");
 
-		$mail->isHTML(true);
-		$mail->Subject = $fields["title"];
-		$mail->Body = $emailHtml;
+		$mailer->isHTML(true);
+		$mailer->Subject = $fields["title"];
+		$mailer->Body = $emailHtml;
 		// $mail->AltBody = "";
 
-		$mail->send();
+		$mailer->send();
 		echo json_encode(array("success" => true));
 	} catch (Exception $error) {
 		echo json_encode(array(
-			"error" => "Message could not be sent. Mailer Error: {$mail->ErrorInfo}",
+			"error" => "Message could not be sent. Mailer Error: {$mailer->ErrorInfo}",
 			"success" => false)
 		);
 	}
