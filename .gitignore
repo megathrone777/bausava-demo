@@ -1,11 +1,7 @@
-!.vscode/extensions.json
-*.local
-*.log*
-.DS_Store
 .env
 .idea
 .parcel-cache
-.vscode/*
+.vscode
 node_modules
 uploads
 yarn.lock
