@@ -4,8 +4,8 @@
 	$pathname = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
 	if (str_contains($pathname, "/admin")) {
-  session_start();
- }
+		session_start();
+	}
 ?>
 <!doctype html>
 <html lang="cs">
