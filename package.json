@@ -33,7 +33,7 @@
   },
   "scripts": {
     "build": "parcel build",
-    "dev": "parcel watch"
+    "develop": "parcel watch"
   },
   "version": "1.0.0"
 }
