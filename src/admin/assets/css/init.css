@@ -38,6 +38,10 @@ select:not([size]) {
   print-color-adjust: exact;
 }
 
+.ProseMirror {
+  white-space: pre-wrap;
+}
+
 .dropzone {
   border-radius: 10px;
   border: 2px dashed #bbb;
@@ -138,28 +142,34 @@ select:not([size]) {
   outline: 2px dashed #10b981;
   outline-offset: 4px;
 }
+
 .ghost {
   border: 2px dashed #93c5fd;
   background: #eff6ff;
 }
+
 .status {
   display: flex;
   align-items: center;
   gap: 8px;
   color: #6b7280;
 }
+
 .status .dot {
   width: 8px;
   height: 8px;
   border-radius: 9999px;
   background: #9ca3af;
 }
+
 .status.saving .dot {
   background: #f59e0b;
 }
+
 .status.saved .dot {
   background: #10b981;
 }
+
 .status.error .dot {
   background: #ef4444;
 }

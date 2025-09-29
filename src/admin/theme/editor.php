@@ -2,7 +2,6 @@
 	x-data="{
 		content: '<?= trim($editorValue); ?>'
 	}"
-	init="$watch('content', (val) => { console.log(val) })"
 	class="
 		bg-gray-300
 		border border-gray-900
@@ -18,7 +17,14 @@
 		:value="content"
 	>
 
-	<alpine-editor x-model="content" x-ref="editor">
+	<alpine-editor
+		@focusout="
+			const newValue = $event.currentTarget.view.dom.innerHTML
+
+			content = newValue
+		"
+		x-model="content"
+	>
 		<div class="d-flex gap-2" data-type="menu">
 			<button
 				class="btn btn-sm btn-light"
@@ -42,8 +48,6 @@
 		<div
 			class="pt-3 px-3"
 			data-type="editor"
-			@keydown="(event) => $refs.editor._x_model.set(event.target.innerHTML)"
-		>
-		</div>
+		></div>
 	</alpine-editor>
 </div>

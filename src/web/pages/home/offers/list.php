@@ -3,7 +3,9 @@
 	require_once "theme/product.php";
 	require_once "helpers/getString.php";
 	
-	$offers = R::findAll("offers", "ORDER BY id DESC LIMIT 4");
+	$limit = 4;
+	$offers = R::findAll("offers", "ORDER BY id DESC LIMIT " . $limit);
+	$offersTotal = R::count("offers");
 ?>
 
 <div
@@ -29,13 +31,14 @@
 	<?php endforeach; ?>
 </div>
 
-<div class="text-center">
-	<?=
-		button(
-			href: "/offers",
-			template: "primary",
-			text: getString("showMore")
-		);
-	?>
-</div>
-
+<?php if ($offersTotal > $limit): ?>
+	<div class="text-center">
+		<?=
+			button(
+				href: "/offers",
+				template: "primary",
+				text: getString("showMore")
+			);
+		?>
+	</div>
+<?php endif; ?>
